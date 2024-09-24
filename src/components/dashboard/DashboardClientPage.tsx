@@ -100,7 +100,7 @@ const DashboardClientPage = () => {
           })}
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-center w-full  gap-2  ">
+        <div className="flex flex-col md:flex-row justify-center items-start w-full  gap-2  ">
           <SideTable
             title="Upcoming Events"
             header={UPCOMING_PAST_EVENTS_HEADER}

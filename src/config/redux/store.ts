@@ -5,10 +5,12 @@ import {
 
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import counterSlice from "./slices/counterSlice";
+import eventSlice from "./slices/eventSlice";
 
 // Combining Reducers
 const rootReducer = combineReducers({
   counter: counterSlice,
+  events: eventSlice,
 });
 
 export const store = configureStore({

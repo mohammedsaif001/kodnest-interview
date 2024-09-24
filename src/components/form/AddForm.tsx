@@ -27,7 +27,7 @@ const AddForms = ({
         <RenderFormFields
           handleClose={handleClose}
           FormValues={FormValues}
-          sendCredentials={handleAdd}
+          onSubmit={handleAdd}
           Component={Component}
           {...rest}
         />

@@ -5,7 +5,7 @@ import RenderFormFields from "./RenderFormFields";
 const EditForm = ({
   handleEditModal,
   editData,
-  editApi,
+  handleEditFunction,
   editModal,
   heading,
   FormValues,
@@ -22,7 +22,7 @@ const EditForm = ({
         <RenderFormFields
           handleClose={handleEditModal}
           data={editData}
-          sendCredentials={editApi}
+          onSubmit={handleEditFunction}
           Component={Component}
           FormValues={FormValues}
         />

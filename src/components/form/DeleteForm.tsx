@@ -7,16 +7,12 @@ import { Button } from "@mui/material";
 const DeleteForm = ({
   deleteModal,
   handleDeleteModal,
-  deleteApi,
+  handleDelete,
   data,
   heading,
   totalRecordsFromFrontend,
 }) => {
   const pathName = usePathname();
-
-  const deleteLogic = () => {
-    console.log("shshss", data);
-  };
 
   return (
     <section>
@@ -29,7 +25,7 @@ const DeleteForm = ({
           <Button color="secondary" onClick={() => handleDeleteModal()}>
             Cancel
           </Button>
-          <Button color="primary" onClick={() => deleteLogic()}>
+          <Button color="primary" onClick={() => handleDelete(data)}>
             Delete
           </Button>
         </div>

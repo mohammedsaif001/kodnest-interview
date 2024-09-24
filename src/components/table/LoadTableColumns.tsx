@@ -134,7 +134,7 @@ const LoadTableColumns = ({
         FormValues={FormValues}
         handleEditModal={handleEditModal}
         editData={data}
-        editApi={handleEdit}
+        handleEditFunction={handleEdit}
         editModal={editModal}
         heading={`Edit ${modalHeading}`}
       />
@@ -142,7 +142,7 @@ const LoadTableColumns = ({
         deleteModal={deleteModal}
         handleDeleteModal={handleDeleteModal}
         heading={`Delete ${modalHeading}`}
-        deleteApi={handleDelete}
+        handleDelete={handleDelete}
         data={data}
         totalRecordsFromFrontend={totalRecordsFromFrontend}
       />

@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const counterSlice = createSlice({
-  name: "events",
+  name: "pagination",
   initialState,
   reducers: {
     increment: (state) => {

@@ -4,40 +4,42 @@ import React from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import TablePagination from "./TablePagination";
 import { MenuItem, Select } from "@mui/material";
+import { useDispatch, useSelector } from "@/config/redux/store";
+import {
+  handleChangeItemsPerPage,
+  handleChangePageNumber,
+} from "@/config/redux/slices/paginationSlice";
 
 const TableUtility = ({ inputData, data, modetype }: any) => {
+  const itemsPerPage = useSelector((state) => state.pagination.itemsPerPage);
+  const dispatch = useDispatch();
   const pathname = usePathname();
   const router = useRouter();
   const options = [
     {
-      value: "25",
-      name: "25",
+      value: "2",
+      name: "2",
     },
     {
-      value: "50",
-      name: "50",
+      value: "5",
+      name: "5",
     },
     {
-      value: "100",
-      name: "100",
-    },
-    {
-      value: "200",
-      name: "200",
-    },
-    {
-      value: "500",
-      name: "500",
+      value: "10",
+      name: "10",
     },
   ];
   console.log("Shsjkhsss", data);
   return (
-    <div className={` flex  items-center z-10 py-6 px-4 justify-end`}>
+    <div
+      className={` flex flex-row-reverse  items-center z-10 py-6 px-4 justify-between`}
+    >
       <div className="w-max">
         <Select
-          value={"25"}
-          onChange={(value) => {
-            console.log("skkssss", value);
+          value={itemsPerPage}
+          onChange={(e) => {
+            dispatch(handleChangeItemsPerPage(Number(e.target.value)));
+            dispatch(handleChangePageNumber(1));
           }}
         >
           {options?.map((item) => (
@@ -47,7 +49,7 @@ const TableUtility = ({ inputData, data, modetype }: any) => {
           ))}
         </Select>
       </div>
-      <TablePagination bodyData={inputData} data={data} itemsPerPage={"5"} />
+      <TablePagination bodyData={inputData} data={data} itemsPerPage={"2"} />
     </div>
   );
 };

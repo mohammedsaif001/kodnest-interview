@@ -5,7 +5,7 @@ import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
 const initialState = eventsData;
 
 const eventsSlice = createSlice({
-  name: "events",
+  name: "pagination",
   initialState,
   reducers: {
     editEventData(

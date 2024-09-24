@@ -24,14 +24,18 @@ const TableBody = ({
   totalRecordsFromFrontend,
   modetype,
 }: any) => {
-  const resData = data;
+  const paginationStore = useSelector((store) => store.pagination);
+  const { itemsPerPage, pageNumber } = paginationStore;
+
+  const resData = data?.slice(
+    itemsPerPage * (pageNumber - 1),
+    pageNumber * itemsPerPage
+  );
   const pathname = usePathname();
   console.log("jshjshsss", resData);
   return (
     <>
-      {data?.data !== null &&
-        !!Object.keys(resData).length &&
-        Array.isArray(resData) &&
+      {Array.isArray(resData) &&
         resData?.map((data: any, i: any) => (
           <tr
             key={i}
@@ -117,7 +121,7 @@ const TableComponent = ({
   Component?: any;
   modalHeading?: string;
 }) => {
-  const totalRecordsFromFrontend = body?.length || body?.data?.totalRecords;
+  const totalRecordsFromFrontend = body?.length;
 
   const pathName = usePathname();
 

@@ -17,13 +17,18 @@ import { EVENTS_HEADER } from "@/constants/tableHeaders";
 import { showToast } from "@/utils";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import {
+  TEventDetails,
+  TEventDetailsWithId,
+  TEventPayloadOnclick,
+} from "../../../../types";
 
 const EventsPage = () => {
   const events = useSelector((store) => store.events);
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const handleAdd = (data) => {
+  const handleAdd = (data: TEventDetails) => {
     console.log("Skkssss", data);
     dispatch(addEventData(data));
     dispatch(incrementTotalEvents());
@@ -31,20 +36,22 @@ const EventsPage = () => {
     showToast("success", "Event Added");
   };
 
-  const onClick = (data) => {
-    const id = data?.data?.[data.key];
-    console.log("sjhjssss", id);
-    router.push(`/events/${id}`);
+  const onClick = (data: TEventPayloadOnclick) => {
+    const id = data.key === "eventId" ? data.data.eventId : null;
+    if (id) {
+      console.log("sjhjssss", data, id);
+      // router.push(`/events/${id}`);
+    }
   };
 
-  const handleEdit = (data) => {
+  const handleEdit = (data: TEventDetailsWithId) => {
     dispatch(editEventData(data));
     dispatch(replaceUpcomingPastEvents({ data, isDelete: false }));
     console.log("Shkssss", data);
     showToast("success", "Event Edited");
   };
 
-  const handleDelete = (data) => {
+  const handleDelete = (data: TEventDetailsWithId) => {
     dispatch(deleteEventData(data?.eventId));
     dispatch(decrementTotalEvents());
     dispatch(replaceUpcomingPastEvents({ data, isDelete: true }));

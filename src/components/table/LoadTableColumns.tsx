@@ -13,7 +13,6 @@ const LoadTableColumns = ({
   onClick,
   handleDelete,
   handleEdit,
-  FormValues,
   Component,
   modalHeading,
   totalRecordsFromFrontend,
@@ -21,13 +20,12 @@ const LoadTableColumns = ({
 }: {
   data: any;
   classNames;
-  header: TableHeaders[];
+  header;
   pathname: any;
   onClick: any;
   onChange: any;
   handleDelete?: any;
   handleEdit?: any;
-  FormValues?: any;
   Component?: any;
   modalHeading?: string;
   totalRecordsFromFrontend?: number;
@@ -136,7 +134,6 @@ const LoadTableColumns = ({
 
       <EditForm
         Component={Component}
-        FormValues={FormValues}
         handleEditModal={handleEditModal}
         editData={data}
         handleEditFunction={handleEdit}

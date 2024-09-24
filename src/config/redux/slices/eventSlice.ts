@@ -1,6 +1,11 @@
 // counterSlice.js
 import { eventsData } from "@/constants/events";
 import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
+import {
+  TAttendeeWithId,
+  TEventDetails,
+  TEventDetailsWithId,
+} from "../../../../types";
 
 const initialState = eventsData;
 
@@ -10,7 +15,7 @@ const eventsSlice = createSlice({
   reducers: {
     editEventData(
       state: Draft<typeof initialState>,
-      action: PayloadAction<(typeof initialState)[0]>
+      action: PayloadAction<TEventDetailsWithId>
     ) {
       const newData = action.payload;
       const index = state.findIndex(
@@ -32,18 +37,19 @@ const eventsSlice = createSlice({
 
     addEventData(
       state: Draft<typeof initialState>,
-      action: PayloadAction<(typeof initialState)[0]>
+      action: PayloadAction<TEventDetails>
     ) {
       const eventId = new Date().getTime();
       const newData = action.payload;
       console.log("sjhsjsss", newData);
-      state.unshift({ ...newData, eventId });
+      state.unshift({ ...newData, eventId, attendees: [] });
     },
     editAttendee(
       state: Draft<typeof initialState>,
-      action: PayloadAction<typeof initialState & { eventId: number }>
+      action: PayloadAction<TAttendeeWithId & { eventId: number }>
     ) {
       const { eventId, ...attendeeData } = action.payload;
+      console.log("sjgsjss", attendeeData);
       const eventIndex = state.findIndex((item) => item.eventId === eventId);
 
       if (eventIndex !== -1) {

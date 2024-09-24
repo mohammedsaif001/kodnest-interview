@@ -1,18 +1,12 @@
 "use client";
 import { Pagination, Stack } from "@mui/material";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { COLORS_COMBINATION } from "../colors/Colors";
 import { useDispatch, useSelector } from "@/config/redux/store";
 import { handleChangePageNumber } from "@/config/redux/slices/paginationSlice";
 
-const TablePagination = ({
-  bodyData,
-  data,
-}: {
-  bodyData?: any;
-  data?: any;
-}) => {
+const TablePagination = ({ data }: { data?: any }) => {
   const pageNumber = useSelector((state) => state.pagination.pageNumber);
   const itemsPerPage = useSelector((state) => state.pagination.itemsPerPage);
 

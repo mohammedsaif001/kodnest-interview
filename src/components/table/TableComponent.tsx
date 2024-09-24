@@ -18,7 +18,6 @@ const TableBody = ({
   onChange,
   handleDelete,
   handleEdit,
-  FormValues,
   Component,
   modalHeading,
   totalRecordsFromFrontend,
@@ -56,7 +55,6 @@ const TableBody = ({
                 handleDelete={handleDelete}
                 handleEdit={handleEdit}
                 rowIndex={i}
-                FormValues={FormValues}
                 Component={Component}
                 modalHeading={modalHeading}
                 totalRecordsFromFrontend={totalRecordsFromFrontend}
@@ -106,7 +104,6 @@ const TableComponent = ({
   className,
   handleDelete,
   handleEdit,
-  FormValues,
   Component,
   modalHeading,
 }: {
@@ -117,7 +114,6 @@ const TableComponent = ({
   className?: string;
   handleDelete?: any;
   handleEdit?: any;
-  FormValues?: any;
   Component?: any;
   modalHeading?: string;
 }) => {
@@ -141,7 +137,6 @@ const TableComponent = ({
               header={header}
               handleDelete={handleDelete}
               handleEdit={handleEdit}
-              FormValues={FormValues}
               Component={Component}
               modalHeading={modalHeading}
               totalRecordsFromFrontend={totalRecordsFromFrontend}

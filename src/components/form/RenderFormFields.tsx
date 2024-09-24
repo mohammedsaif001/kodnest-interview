@@ -7,10 +7,9 @@ const RenderFormFields = ({
   onSubmit,
   data = null,
   Component,
-  FormValues,
   ...rest
 }) => {
-  const form = useForm<typeof FormValues>({
+  const form = useForm({
     defaultValues: data
       ? {
           ...data,
@@ -18,21 +17,12 @@ const RenderFormFields = ({
       : {},
   });
   console.log("sjhsjsss", data);
-  const {
-    register,
-    control,
-    handleSubmit,
-    formState,
-    watch,
-    getValues,
-    setValue,
-    reset,
-    trigger,
-  } = form;
+  const { register, control, handleSubmit, formState, watch, setValue, reset } =
+    form;
 
   const { errors, isSubmitting } = formState;
 
-  const onSubmitHandler: SubmitHandler<typeof FormValues> = (data) => {
+  const onSubmitHandler = (data) => {
     console.log("shjsss", data);
     onSubmit(data);
     handleClose();
@@ -71,7 +61,6 @@ const RenderFormFields = ({
             type="submit"
             className="w-full"
             variant="contained"
-            loading={isSubmitting}
           >
             Save
           </Button>

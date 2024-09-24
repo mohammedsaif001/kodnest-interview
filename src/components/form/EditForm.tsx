@@ -8,7 +8,6 @@ const EditForm = ({
   handleEditFunction,
   editModal,
   heading,
-  FormValues,
   Component,
 }) => {
   console.log("hsksss", editData);
@@ -24,7 +23,6 @@ const EditForm = ({
           data={editData}
           onSubmit={handleEditFunction}
           Component={Component}
-          FormValues={FormValues}
         />
       </CustomModal>
     </section>

@@ -70,7 +70,7 @@ const EventItemClient = ({ eventId }) => {
             return (
               <p key={key} className="grid grid-cols-2 ">
                 <span className="font-bold">Number of Attendees:</span>{" "}
-                <span>{value}</span>
+                <span>{value as string | number}</span>
               </p>
             );
           }
@@ -82,7 +82,7 @@ const EventItemClient = ({ eventId }) => {
                   key.slice(1).replace(/([A-Z])/g, " $1")}
                 :
               </span>{" "}
-              <span>{value}</span>
+              <span>{value as string | number}</span>
             </p>
           );
         })}

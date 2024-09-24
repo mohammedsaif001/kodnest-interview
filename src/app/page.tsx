@@ -8,7 +8,7 @@ import React, { FormEvent, useEffect, useState } from "react";
 //   setAccessToken,
 //   setInputError,
 // } from "@redux/slices/authSlice";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useDispatch } from "@/config/redux/store";
 import LoginFrom from "@/components/form/LoginForm";
 // import useThrowToLogin from "../hooks/useThrowToLogin";
@@ -16,14 +16,9 @@ import LoginFrom from "@/components/form/LoginForm";
 const Login = () => {
   // const { errorMessage, accessToken, authLoading, loginPageState } =
   // useSelector((state: RootState) => state.authReducer);
-  const searchParams = useSearchParams();
   // const udateSlice =() => {
   //   setForceChangePin ("")
   // }
-  const router = useRouter();
-  const query = searchParams.get("clear");
-
-  const dispatch = useDispatch();
 
   // const { throwOut } = useThrowToLogin();
   // useEffect(() => {

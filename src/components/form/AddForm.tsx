@@ -4,7 +4,7 @@ import RenderFormFields from "./RenderFormFields";
 import CustomModal from "./CustomModal";
 import { Button } from "@mui/material";
 
-const AddForms = ({ handleAdd, Component, heading, FormValues, ...rest }) => {
+const AddForms = ({ handleAdd, Component, heading, ...rest }) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const onOpen = () => {
@@ -18,7 +18,6 @@ const AddForms = ({ handleAdd, Component, heading, FormValues, ...rest }) => {
       <CustomModal open={open} handleClose={handleClose} heading={heading}>
         <RenderFormFields
           handleClose={handleClose}
-          FormValues={FormValues}
           onSubmit={handleAdd}
           Component={Component}
           {...rest}

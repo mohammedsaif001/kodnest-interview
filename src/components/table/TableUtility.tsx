@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import TablePagination from "./TablePagination";
 import { MenuItem, Select } from "@mui/material";
 import { useDispatch, useSelector } from "@/config/redux/store";
@@ -49,7 +49,7 @@ const TableUtility = ({ inputData, data, modetype }: any) => {
           ))}
         </Select>
       </div>
-      <TablePagination bodyData={inputData} data={data} itemsPerPage={"2"} />
+      <TablePagination data={data} />
     </div>
   );
 };

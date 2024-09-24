@@ -1,6 +1,4 @@
 "use client";
-import { useParams, usePathname } from "next/navigation";
-import { useState } from "react";
 import CustomModal from "./CustomModal";
 import { Button } from "@mui/material";
 
@@ -10,10 +8,7 @@ const DeleteForm = ({
   handleDelete,
   data,
   heading,
-  totalRecordsFromFrontend,
 }) => {
-  const pathName = usePathname();
-
   return (
     <section>
       <CustomModal

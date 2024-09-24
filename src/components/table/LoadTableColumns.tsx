@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 
 import moment from "moment";
 
@@ -15,20 +15,16 @@ const LoadTableColumns = ({
   handleEdit,
   Component,
   modalHeading,
-  totalRecordsFromFrontend,
   rowIndex,
 }: {
   data: any;
   classNames;
   header;
-  pathname: any;
   onClick: any;
-  onChange: any;
   handleDelete?: any;
   handleEdit?: any;
   Component?: any;
   modalHeading?: string;
-  totalRecordsFromFrontend?: number;
   rowIndex: any;
 }) => {
   const [editModal, setEditModal] = useState(false);
@@ -57,25 +53,6 @@ const LoadTableColumns = ({
               ""
             );
 
-          case col.type === "BUTTON":
-            console.log("datttta", data);
-            return col.visible ? (
-              <td className={classNames} key={`${col.key}-${index}`}>
-                <div className="w-max ">
-                  {!data.IsVoid && data.paymentStatus !== "PAID" && (
-                    <Button
-                      color="primary"
-                      onClick={() => onClick({ key: col.key, data })}
-                    >
-                      {col.buttonTitle}
-                    </Button>
-                  )}
-                </div>
-              </td>
-            ) : (
-              ""
-            );
-
           case col?.type === "DATE":
             return col.visible ? (
               <td className={classNames} key={`${col.key}-${index}`}>
@@ -91,7 +68,7 @@ const LoadTableColumns = ({
           case col?.type === "CRUD":
             return col.visible ? (
               <td className={classNames + ``} key={`${col.key}-${index}`}>
-                <div className="flex gap-4">
+                <div className="flex gap-4 py-3 sm:py-0">
                   <Button
                     color="primary"
                     variant="contained"
@@ -127,10 +104,6 @@ const LoadTableColumns = ({
             );
         }
       })}
-      {/* TableBody Row for column Chooser */}
-      <td className={classNames}>
-        <span className=""></span>
-      </td>
 
       <EditForm
         Component={Component}
@@ -146,7 +119,6 @@ const LoadTableColumns = ({
         heading={`Delete ${modalHeading}`}
         handleDelete={handleDelete}
         data={data}
-        totalRecordsFromFrontend={totalRecordsFromFrontend}
       />
     </>
   );

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import InputField from "../mui/forms/InputField";
 import axios from "axios";
+import { showToast } from "@/utils";
 
 export type FormValues = {
   email: string;
@@ -22,10 +23,13 @@ const LoginFrom = () => {
       const { data: res } = await axios.post("/api/login", data);
 
       if (res?.status === 200) {
+        showToast("success", "Logged In Successfully");
         router.push("/dashboard");
+      } else {
+        showToast("error", res.error);
       }
     } catch (error) {
-      console.log("skjshkjshs", error);
+      showToast("error", "Something Went Wrong");
     }
   };
 

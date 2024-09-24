@@ -10,7 +10,6 @@ import {
   editAttendee,
 } from "@/config/redux/slices/eventSlice";
 import AddForms from "../form/AddForm";
-import { useState } from "react";
 import {
   decrementTotalAttendees,
   incrementTotalAttendees,
@@ -75,7 +74,7 @@ const EventItemClient = ({ eventId }) => {
             );
           }
           return (
-            <p key={key} className="grid grid-cols-2 ">
+            <p key={key} className="grid grid-cols-2 gap-2">
               <span className="font-bold">
                 {" "}
                 {key.charAt(0).toUpperCase() +

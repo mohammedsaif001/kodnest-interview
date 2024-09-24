@@ -5,15 +5,9 @@ import {
   FormHelperText,
   IconButton,
   InputAdornment,
-  InputLabel,
   OutlinedInput,
-  TextField,
-  MenuItem,
-  Select,
 } from "@mui/material";
-import { usePathname } from "next/navigation";
 import React, { InputHTMLAttributes, useState } from "react";
-import { Controller } from "react-hook-form";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -39,7 +33,6 @@ const InputField = ({
   individualFieldName = null,
   defaultValue = null,
   readOnly = false,
-  isLabel = true,
   ...rest
 }) => {
   const errorField =
@@ -49,7 +42,6 @@ const InputField = ({
   const [showPassword, setShowPassword] = useState(
     name?.toLowerCase().includes("password") ? false : true
   );
-  const pathName = usePathname();
   const [toggle, setToggle] = useState(false);
   const togglePassword = () => {
     setToggle(!toggle);
@@ -82,7 +74,7 @@ const InputField = ({
         required={required}
         defaultValue={defaultValue}
         readOnly={readOnly}
-        placeholder={label === "Password" ? "*******" : label}
+        placeholder={label}
         endAdornment={
           type === "password" && (
             <InputAdornment position="end">

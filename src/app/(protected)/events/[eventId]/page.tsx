@@ -5,13 +5,16 @@ type EventItemProps = {
   };
 };
 
+export async function generateMetadata({
+  params: { eventId },
+}: EventItemProps) {
+  return {
+    title: `Event ${eventId} Details`,
+  };
+}
 const EventItemComponent: React.FC<EventItemProps> = ({
   params: { eventId },
 }) => {
-  return (
-    <div>
-      <EventItemClient eventId={eventId} />
-    </div>
-  );
+  return <EventItemClient eventId={eventId} />;
 };
 export default EventItemComponent;

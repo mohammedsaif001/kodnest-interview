@@ -1,6 +1,5 @@
 "use client";
-import React, { ReactNode, useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import React from "react";
 import LoadTableColumns from "./LoadTableColumns";
 import TableUtility from "./TableUtility";
 import { useSelector } from "@/config/redux/store";
@@ -20,8 +19,6 @@ const TableBody = ({
   handleEdit,
   Component,
   modalHeading,
-  totalRecordsFromFrontend,
-  modetype,
 }: any) => {
   const paginationStore = useSelector((store) => store.pagination);
   const { itemsPerPage, pageNumber } = paginationStore;
@@ -30,7 +27,6 @@ const TableBody = ({
     itemsPerPage * (pageNumber - 1),
     pageNumber * itemsPerPage
   );
-  const pathname = usePathname();
   console.log("jshjshsss", resData);
   return (
     <>
@@ -38,26 +34,20 @@ const TableBody = ({
         resData?.map((data: any, i: any) => (
           <tr
             key={i}
-            className={`${
-              modetype
-                ? "text-dark-mode table-dark-mode"
-                : "text-light-mode table-light-mode"
-            } border-b-searchBtnColor-hover border-b-[0.5px]  text-xs font-normal tracking-wider `}
+            className={`
+            border-b-searchBtnColor-hover border-b-[0.5px]  text-xs font-normal tracking-wider `}
           >
             {
               <LoadTableColumns
                 data={data}
-                classNames={"sm:py-5 2xl:py-7 pl-6"}
+                classNames={"sm:py-3 2xl:py-4 pl-6"}
                 header={header}
-                pathname={pathname}
                 onClick={onClick}
-                onChange={onChange}
                 handleDelete={handleDelete}
                 handleEdit={handleEdit}
                 rowIndex={i}
                 Component={Component}
                 modalHeading={modalHeading}
-                totalRecordsFromFrontend={totalRecordsFromFrontend}
               />
             }
           </tr>
@@ -66,11 +56,10 @@ const TableBody = ({
   );
 };
 
-const TableHeader = ({ header, modalHeading, modetype }: any) => {
-  console.log("shjshjss", header);
+const TableHeader = ({ header, modalHeading }: any) => {
   return (
     <thead>
-      <tr className="text-blackishText  bg-table-header-color h-10 font-semibold tracking-wider sm:text-[0.7rem] 2xl:text-xs ">
+      <tr className=" bg-table-header-color h-10 font-semibold tracking-wider sm:text-[0.7rem] 2xl:text-xs ">
         {header?.map((head: any, index) =>
           head?.visible ? (
             <th
@@ -78,13 +67,7 @@ const TableHeader = ({ header, modalHeading, modetype }: any) => {
               key={head?.name}
             >
               <div className="flex-start flex pl-5">
-                <p
-                  className={`w-max font-semibold ${
-                    modetype ? "text-dark-mode" : "text-light-mode"
-                  }`}
-                >
-                  {head?.name}
-                </p>
+                <p className={`w-max font-semibold `}>{head?.name}</p>
               </div>
             </th>
           ) : (
@@ -99,7 +82,6 @@ const TableHeader = ({ header, modalHeading, modetype }: any) => {
 const TableComponent = ({
   header,
   body,
-  headerName,
   onClick,
   className,
   handleDelete,
@@ -109,7 +91,6 @@ const TableComponent = ({
 }: {
   header: any;
   body: any;
-  headerName?: string;
   onClick?: (params: Params) => void;
   className?: string;
   handleDelete?: any;
@@ -117,10 +98,6 @@ const TableComponent = ({
   Component?: any;
   modalHeading?: string;
 }) => {
-  const totalRecordsFromFrontend = body?.length;
-
-  const pathName = usePathname();
-
   const loadData = (body: any) => {
     return body;
   };
@@ -139,7 +116,6 @@ const TableComponent = ({
               handleEdit={handleEdit}
               Component={Component}
               modalHeading={modalHeading}
-              totalRecordsFromFrontend={totalRecordsFromFrontend}
             />
           </tbody>
         </table>

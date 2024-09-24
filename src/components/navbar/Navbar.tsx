@@ -1,6 +1,7 @@
 "use client";
 
 import { NAVBAR_LINKS } from "@/constants/data";
+import { showToast } from "@/utils";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -11,6 +12,7 @@ const Navbar = () => {
     await axios.get("/api/logout");
     setTimeout(() => {
       router.push("/");
+      showToast("success", "Logout Success");
     }, 300);
   };
   return (
@@ -26,7 +28,12 @@ const Navbar = () => {
             </li>
           );
         })}
-        <p onClick={handleLogout}>Logout</p>
+        <p
+          onClick={handleLogout}
+          className="cursor-pointer text-lg hover:underline"
+        >
+          Logout
+        </p>
       </ul>
     </header>
   );

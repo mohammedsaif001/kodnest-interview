@@ -7,12 +7,14 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import counterSlice from "./slices/counterSlice";
 import eventSlice from "./slices/eventSlice";
 import paginationSlice from "./slices/paginationSlice";
+import dashboardStatsSlice from "./slices/dashboardStatsSlice";
 
 // Combining Reducers
 const rootReducer = combineReducers({
   counter: counterSlice,
   events: eventSlice,
   pagination: paginationSlice,
+  dashboardStats: dashboardStatsSlice,
 });
 
 export const store = configureStore({

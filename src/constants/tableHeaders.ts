@@ -1,12 +1,17 @@
-export const HIGHEST_TURNOVER_SPORTS = [
+export const UPCOMING_PAST_EVENTS_HEADER = [
   {
-    name: "user Id",
-    key: "userId",
+    name: "Event Id",
+    key: "eventId",
+  },
+
+  {
+    name: "Event Name",
+    key: "eventName",
+    type: "AMOUNT",
   },
   {
-    name: "Turnover",
-    key: "totalPnl",
-    type: "AMOUNT",
+    name: "Date",
+    key: "eventDate",
   },
 ];
 

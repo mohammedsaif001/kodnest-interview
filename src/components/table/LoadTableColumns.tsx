@@ -4,6 +4,7 @@ import moment from "moment";
 
 import { Button } from "@mui/material";
 import EditForm from "../form/EditForm";
+import DeleteForm from "../form/DeleteForm";
 
 const LoadTableColumns = ({
   data,
@@ -137,14 +138,14 @@ const LoadTableColumns = ({
         editModal={editModal}
         heading={`Edit ${modalHeading}`}
       />
-      {/* <DeleteForm
+      <DeleteForm
         deleteModal={deleteModal}
         handleDeleteModal={handleDeleteModal}
         heading={`Delete ${modalHeading}`}
         deleteApi={handleDelete}
         data={data}
         totalRecordsFromFrontend={totalRecordsFromFrontend}
-      /> */}
+      />
     </>
   );
 };

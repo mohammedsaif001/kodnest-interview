@@ -5,7 +5,6 @@ import { Button } from "@mui/material";
 const RenderFormFields = ({
   handleClose,
   data = null,
-  sendCredentials,
   Component,
   FormValues,
   ...rest
@@ -33,7 +32,7 @@ const RenderFormFields = ({
   const { errors, isSubmitting } = formState;
 
   const onSubmit: SubmitHandler<typeof FormValues> = (data) => {
-    sendCredentials(data, handleClose);
+    console.log("sjkssss", data);
   };
 
   return (

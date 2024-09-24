@@ -14,6 +14,7 @@ import {
 } from "@/config/redux/slices/eventSlice";
 import { useDispatch, useSelector } from "@/config/redux/store";
 import { EVENTS_HEADER } from "@/constants/tableHeaders";
+import { showToast } from "@/utils";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -22,17 +23,12 @@ const EventsPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const [addOpen, setAddOpen] = useState(false);
-
   const handleAdd = (data) => {
     console.log("Skkssss", data);
     dispatch(addEventData(data));
     dispatch(incrementTotalEvents());
     dispatch(replaceUpcomingPastEvents({ data, isDelete: false }));
-  };
-
-  const addOpenModel = (e) => {
-    setAddOpen(e);
+    showToast("success", "Event Added");
   };
 
   const onClick = (data) => {
@@ -45,12 +41,14 @@ const EventsPage = () => {
     dispatch(editEventData(data));
     dispatch(replaceUpcomingPastEvents({ data, isDelete: false }));
     console.log("Shkssss", data);
+    showToast("success", "Event Edited");
   };
 
   const handleDelete = (data) => {
     dispatch(deleteEventData(data?.eventId));
     dispatch(decrementTotalEvents());
     dispatch(replaceUpcomingPastEvents({ data, isDelete: true }));
+    showToast("success", "Event Deleted");
   };
   return (
     <div className="p-4">
@@ -60,7 +58,6 @@ const EventsPage = () => {
           handleAdd={handleAdd}
           Component={EventForm}
           heading={`Add Event`}
-          addOpenForm={addOpenModel}
         />
       </section>
       <TableComponent

@@ -15,6 +15,7 @@ import {
   decrementTotalAttendees,
   incrementTotalAttendees,
 } from "@/config/redux/slices/dashboardStatsSlice";
+import { showToast } from "@/utils";
 
 const EventItemClient = ({ eventId }) => {
   const eventDetails = useSelector(
@@ -28,6 +29,7 @@ const EventItemClient = ({ eventId }) => {
     console.log("shjsksss", data);
     dispatch(deleteAttendee({ eventId: +eventId, attendeeId: data?.id }));
     dispatch(decrementTotalAttendees());
+    showToast("success", "Attendee Deleted");
   };
 
   const handleEdit = (data) => {
@@ -37,17 +39,15 @@ const EventItemClient = ({ eventId }) => {
         eventId: +eventId,
       })
     );
+    showToast("success", "Attendee Edited");
+
     console.log("sjhsss", data);
   };
 
   const handleAdd = (data) => {
     dispatch(addAttendee({ eventId: +eventId, attendee: data }));
     dispatch(incrementTotalAttendees());
-  };
-  const [addOpen, setAddOpen] = useState(false);
-
-  const addOpenModel = (e) => {
-    setAddOpen(e);
+    showToast("success", "Attendee Added");
   };
 
   return (
@@ -58,7 +58,6 @@ const EventItemClient = ({ eventId }) => {
           handleAdd={handleAdd}
           Component={AttendeeForm}
           heading={`Add Event`}
-          addOpenForm={addOpenModel}
         />
       </section>
       <article className="w-max flex flex-col gap-2">

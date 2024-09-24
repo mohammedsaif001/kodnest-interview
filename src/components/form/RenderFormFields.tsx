@@ -32,15 +32,17 @@ const RenderFormFields = ({
 
   const { errors, isSubmitting } = formState;
 
-  // const onSubmit: SubmitHandler<typeof FormValues> = (data) => {
-  //   console.log("sjkssss", data);
-  // };
+  const onSubmitHandler: SubmitHandler<typeof FormValues> = (data) => {
+    console.log("shjsss", data);
+    onSubmit(data);
+    handleClose();
+  };
 
   return (
     <div>
       <form
         className="flex flex-col gap-4  justify-center items-center "
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmitHandler)}
         noValidate
       >
         <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-2 w-full">

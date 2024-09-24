@@ -25,7 +25,13 @@ const DeleteForm = ({
           <Button color="secondary" onClick={() => handleDeleteModal()}>
             Cancel
           </Button>
-          <Button color="primary" onClick={() => handleDelete(data)}>
+          <Button
+            color="primary"
+            onClick={() => {
+              handleDelete(data);
+              handleDeleteModal();
+            }}
+          >
             Delete
           </Button>
         </div>

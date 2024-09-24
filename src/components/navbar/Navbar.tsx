@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const Navbar = () => {
   const router = useRouter();
   const handleLogout = async () => {
-    const res = await axios.get("/api/logout");
+    await axios.get("/api/logout");
     setTimeout(() => {
       router.push("/");
     }, 300);

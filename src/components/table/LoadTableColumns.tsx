@@ -3,6 +3,7 @@ import React, { ReactNode, useState } from "react";
 import moment from "moment";
 
 import { Button } from "@mui/material";
+import EditForm from "../form/EditForm";
 
 const LoadTableColumns = ({
   data,
@@ -31,11 +32,9 @@ const LoadTableColumns = ({
   totalRecordsFromFrontend?: number;
   rowIndex: any;
 }) => {
-  const status = data?.status || data?.keyStatus;
-
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-
+  console.log("shjshjsss", data, rowIndex);
   const handleEditModal = () => setEditModal(!editModal);
   const handleDeleteModal = () => setDeleteModal(!deleteModal);
 
@@ -100,10 +99,10 @@ const LoadTableColumns = ({
                       handleEditModal();
                     }}
                   >
-                    EditTable
+                    Edit
                   </Button>
                   <Button color="secondary" onClick={() => handleDeleteModal()}>
-                    DeleteTable
+                    Delete
                   </Button>
                 </div>
               </td>
@@ -129,16 +128,16 @@ const LoadTableColumns = ({
         <span className=""></span>
       </td>
 
-      {/* <EditForm
+      <EditForm
         Component={Component}
         FormValues={FormValues}
         handleEditModal={handleEditModal}
-        // editData={orgEditData}
+        editData={data}
         editApi={handleEdit}
         editModal={editModal}
         heading={`Edit ${modalHeading}`}
       />
-      <DeleteForm
+      {/* <DeleteForm
         deleteModal={deleteModal}
         handleDeleteModal={handleDeleteModal}
         heading={`Delete ${modalHeading}`}

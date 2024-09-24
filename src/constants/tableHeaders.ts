@@ -15,6 +15,13 @@ export const HIGHEST_TURNOVER_SPORTS = [
   // },
 ];
 
+const ACTION_FIELD_HEADER = {
+  name: "Actions",
+  key: "crud",
+  type: "CRUD",
+  visible: true,
+};
+
 export const EVENTS_HEADER = [
   {
     name: "Event Id",
@@ -48,6 +55,7 @@ export const EVENTS_HEADER = [
     key: "eventDescription",
     visible: true,
   },
+  ACTION_FIELD_HEADER,
 ];
 
 export const MOST_PROFITABLE_SPORTS = [

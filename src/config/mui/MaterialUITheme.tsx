@@ -5,6 +5,8 @@ import {
   ThemeProvider,
   createTheme,
 } from "@mui/material/styles";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 const theme = createTheme({
   // palette:{
@@ -17,8 +19,10 @@ const theme = createTheme({
 const MaterialUITheme = ({ children }: { children: ReactNode }) => {
   return (
     <ThemeProvider theme={theme}>
-      {/* Adding Below line so that tailwind works flawlessly */}
-      <StyledEngineProvider injectFirst>{children}</StyledEngineProvider>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        {/* Adding Below line so that tailwind works flawlessly */}
+        <StyledEngineProvider injectFirst>{children}</StyledEngineProvider>
+      </LocalizationProvider>
     </ThemeProvider>
   );
 };

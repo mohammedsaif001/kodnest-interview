@@ -9,7 +9,7 @@ export const eventsData = [
   },
   {
     eventId: 10002,
-    eventName: "ABC",
+    eventName: "ABssC",
     eventDate: "2024-08-31",
     eventLocation: "Bangalore",
     noOfAttendees: 10,
@@ -25,7 +25,7 @@ export const eventsData = [
   },
   {
     eventId: 10004,
-    eventName: "ABC",
+    eventName: "aaABC",
     eventDate: "2024-08-31",
     eventLocation: "Bangalore",
     noOfAttendees: 10,

@@ -3,6 +3,11 @@ import AddForms from "@/components/form/AddForm";
 import EventForm from "@/components/form/dashboard/EventForm";
 import TableComponent from "@/components/table/TableComponent";
 import {
+  decrementTotalEvents,
+  incrementTotalEvents,
+  replaceUpcomingPastEvents,
+} from "@/config/redux/slices/dashboardStatsSlice";
+import {
   addEventData,
   deleteEventData,
   editEventData,
@@ -22,6 +27,8 @@ const EventsPage = () => {
   const handleAdd = (data) => {
     console.log("Skkssss", data);
     dispatch(addEventData(data));
+    dispatch(incrementTotalEvents());
+    dispatch(replaceUpcomingPastEvents({ data, isDelete: false }));
   };
 
   const addOpenModel = (e) => {
@@ -36,11 +43,14 @@ const EventsPage = () => {
 
   const handleEdit = (data) => {
     dispatch(editEventData(data));
+    dispatch(replaceUpcomingPastEvents({ data, isDelete: false }));
     console.log("Shkssss", data);
   };
 
   const handleDelete = (data) => {
     dispatch(deleteEventData(data?.eventId));
+    dispatch(decrementTotalEvents());
+    dispatch(replaceUpcomingPastEvents({ data, isDelete: true }));
   };
   return (
     <div className="p-4">

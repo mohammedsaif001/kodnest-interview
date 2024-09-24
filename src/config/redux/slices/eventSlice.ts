@@ -35,10 +35,9 @@ const eventsSlice = createSlice({
       action: PayloadAction<(typeof initialState)[0]>
     ) {
       const eventId = new Date().getTime();
-      const noOfAttendees = 0;
       const newData = action.payload;
       console.log("sjhsjsss", newData);
-      state.unshift({ ...newData, eventId, noOfAttendees });
+      state.unshift({ ...newData, eventId });
     },
     editAttendee(
       state: Draft<typeof initialState>,

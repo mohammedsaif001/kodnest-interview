@@ -11,6 +11,10 @@ import {
 } from "@/config/redux/slices/eventSlice";
 import AddForms from "../form/AddForm";
 import { useState } from "react";
+import {
+  decrementTotalAttendees,
+  incrementTotalAttendees,
+} from "@/config/redux/slices/dashboardStatsSlice";
 
 const EventItemClient = ({ eventId }) => {
   const eventDetails = useSelector(
@@ -23,6 +27,7 @@ const EventItemClient = ({ eventId }) => {
   const handleDelete = (data) => {
     console.log("shjsksss", data);
     dispatch(deleteAttendee({ eventId: +eventId, attendeeId: data?.id }));
+    dispatch(decrementTotalAttendees());
   };
 
   const handleEdit = (data) => {
@@ -37,6 +42,7 @@ const EventItemClient = ({ eventId }) => {
 
   const handleAdd = (data) => {
     dispatch(addAttendee({ eventId: +eventId, attendee: data }));
+    dispatch(incrementTotalAttendees());
   };
   const [addOpen, setAddOpen] = useState(false);
 

@@ -57,6 +57,7 @@ const RenderFormFields = ({
         <div className="flex justify-end gap-2 w-full mt-4">
           <Button
             color="secondary"
+            variant="contained"
             type="reset"
             className="w-full"
             onClick={() => reset()}
@@ -67,6 +68,7 @@ const RenderFormFields = ({
             color="primary"
             type="submit"
             className="w-full"
+            variant="contained"
             loading={isSubmitting}
           >
             Save

@@ -23,6 +23,7 @@ const EventItemClient = ({ eventId }) => {
         body={attendeeList}
         header={ATTENDEES_HEADER}
         handleDelete={handleDelete}
+        modalHeading={"Attendee"}
         handleEdit={handleEdit}
         Component={(props) => <AttendeeForm {...props} isEdit={true} />}
       />

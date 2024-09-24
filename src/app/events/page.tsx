@@ -58,7 +58,7 @@ const EventsPage = () => {
         handleEdit={handleEdit}
         onClick={onClick}
         Component={(props) => <EventForm {...props} isEdit={true} />}
-        // modalHeading={modalHeading}
+        modalHeading={"Event"}
       />
     </div>
   );

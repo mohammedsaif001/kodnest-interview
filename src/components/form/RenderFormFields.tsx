@@ -56,7 +56,7 @@ const RenderFormFields = ({
         </div>
         <div className="flex justify-end gap-2 w-full mt-4">
           <Button
-            color="secondary"
+            color="error"
             variant="contained"
             type="reset"
             className="w-full"

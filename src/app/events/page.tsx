@@ -43,14 +43,16 @@ const EventsPage = () => {
     dispatch(deleteEventData(data?.eventId));
   };
   return (
-    <div>
-      EventsPage
-      <AddForms
-        handleAdd={handleAdd}
-        Component={EventForm}
-        heading={`Add Event`}
-        addOpenForm={addOpenModel}
-      />
+    <div className="p-4">
+      <section className="flex justify-between gap-3">
+        <h3 className="font-bold text-2xl">Events Page</h3>
+        <AddForms
+          handleAdd={handleAdd}
+          Component={EventForm}
+          heading={`Add Event`}
+          addOpenForm={addOpenModel}
+        />
+      </section>
       <TableComponent
         body={events}
         header={EVENTS_HEADER}

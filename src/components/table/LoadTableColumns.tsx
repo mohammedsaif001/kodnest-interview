@@ -96,13 +96,18 @@ const LoadTableColumns = ({
                 <div className="flex gap-4">
                   <Button
                     color="primary"
+                    variant="contained"
                     onClick={() => {
                       handleEditModal();
                     }}
                   >
                     Edit
                   </Button>
-                  <Button color="secondary" onClick={() => handleDeleteModal()}>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() => handleDeleteModal()}
+                  >
                     Delete
                   </Button>
                 </div>

@@ -45,14 +45,43 @@ const EventItemClient = ({ eventId }) => {
   };
 
   return (
-    <div>
-      {eventId}
-      <AddForms
-        handleAdd={handleAdd}
-        Component={AttendeeForm}
-        heading={`Add Event`}
-        addOpenForm={addOpenModel}
-      />
+    <div className="p-4 flex flex-col gap-2">
+      <section className="flex justify-between">
+        <h3 className="text-2xl font-bold">{eventDetails?.eventName}</h3>
+        <AddForms
+          handleAdd={handleAdd}
+          Component={AttendeeForm}
+          heading={`Add Event`}
+          addOpenForm={addOpenModel}
+        />
+      </section>
+      <article className="w-max flex flex-col gap-2">
+        {Object.entries(eventDetails).map(([key, value]) => {
+          // Skip 'eventName' and 'attendees'
+          if (key === "eventName" || key === "attendees") {
+            return null;
+          }
+          if (key === "noOfAttendees") {
+            return (
+              <p key={key} className="grid grid-cols-2 ">
+                <span className="font-bold">Number of Attendees:</span>{" "}
+                <span>{value}</span>
+              </p>
+            );
+          }
+          return (
+            <p key={key} className="grid grid-cols-2 ">
+              <span className="font-bold">
+                {" "}
+                {key.charAt(0).toUpperCase() +
+                  key.slice(1).replace(/([A-Z])/g, " $1")}
+                :
+              </span>{" "}
+              <span>{value}</span>
+            </p>
+          );
+        })}
+      </article>
       <TableComponent
         body={attendeeList}
         header={ATTENDEES_HEADER}

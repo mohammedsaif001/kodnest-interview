@@ -19,8 +19,8 @@ const AddForms = ({
     addOpenForm(open);
   };
   return (
-    <>
-      <Button color="primary" onClick={() => onOpen()}>
+    <div>
+      <Button color="primary" variant="contained" onClick={() => onOpen()}>
         {heading}
       </Button>
       <CustomModal open={open} handleClose={handleClose} heading={heading}>
@@ -32,7 +32,7 @@ const AddForms = ({
           {...rest}
         />
       </CustomModal>
-    </>
+    </div>
   );
 };
 

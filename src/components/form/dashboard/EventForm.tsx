@@ -1,14 +1,10 @@
 "use client";
 import InputField from "@/components/mui/forms/InputField";
-import { DatePicker } from "@mui/x-date-pickers";
-import dayjs from "dayjs";
 import { usePathname } from "next/navigation";
-import { Controller } from "react-hook-form";
 
 const EventForm = ({ register, control, errors, data, watch }) => {
   const pathName = usePathname();
-  const defaultDate = dayjs(data.eventDate);
-  console.log("sjhsjssssss", defaultDate, data);
+
   return (
     <>
       <InputField
@@ -41,26 +37,6 @@ const EventForm = ({ register, control, errors, data, watch }) => {
         errors={errors}
         required={true}
       />
-      {/* <Controller
-        name="eventDate"
-        control={control}
-        rules={{
-          required: {
-            value: true,
-            message: "Event Date is Required",
-          },
-        }}
-        defaultValue={defaultDate}
-        render={({ field }) => (
-          <DatePicker
-            {...field}
-            label="Event Date"
-            renderInput={(params) => (
-              <InputField {...params} errors={errors} required={true} />
-            )}
-          />
-        )}
-      /> */}
       <InputField
         name="eventDescription"
         type="text"

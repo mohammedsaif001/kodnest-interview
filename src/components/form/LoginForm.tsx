@@ -5,14 +5,15 @@ import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import InputField from "../mui/forms/InputField";
 import { DevTool } from "@hookform/devtools";
+import axios from "axios";
 
 export type FormValues = {
   email: string;
   password: string;
 };
 const LoginFrom = () => {
-  const form = useForm<FormValues>();
-
+  const form = useForm();
+  const router = useRouter();
   const {
     register,
     control,
@@ -27,8 +28,16 @@ const LoginFrom = () => {
 
   const { errors, isSubmitting } = formState;
 
-  const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    console.log("shssssss", data);
+  const onSubmit = async (data) => {
+    try {
+      const { data: res } = await axios.post("/api/login", data);
+
+      if (res?.status === 200) {
+        router.push("/dashboard");
+      }
+    } catch (error) {
+      console.log("skjshkjshs", error);
+    }
   };
 
   return (

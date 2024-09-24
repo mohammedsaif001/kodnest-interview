@@ -13,7 +13,8 @@ const TablePagination = ({
   data?: any;
   itemsPerPage?: any;
 }) => {
-  const count = Math.ceil(data?.totalRecords / Number(itemsPerPage));
+  const count = Math.ceil(data?.length / Number(itemsPerPage));
+  console.log("sjhsjssss", count, data);
   const pathname = usePathname();
   const router = useRouter();
   const [page, setPage] = useState(1);
@@ -29,10 +30,10 @@ const TablePagination = ({
   return (
     <Stack spacing={2}>
       <Pagination
-        className={`${COLORS_COMBINATION["text-color-dark"]} `}
+        // className={`${COLORS_COMBINATION["text-color-dark"]} `}
         page={page}
         count={count}
-        sx={paginationSx}
+        // sx={paginationSx}
         // variant="outlined"
         // shape="rounded"
         onChange={handleChange}

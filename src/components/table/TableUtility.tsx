@@ -3,7 +3,7 @@
 import React from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import TablePagination from "./TablePagination";
-import { Select } from "@mui/material";
+import { MenuItem, Select } from "@mui/material";
 
 const TableUtility = ({ inputData, data, modetype }: any) => {
   const pathname = usePathname();
@@ -30,28 +30,24 @@ const TableUtility = ({ inputData, data, modetype }: any) => {
       name: "500",
     },
   ];
-
+  console.log("Shsjkhsss", data);
   return (
-    <div
-      className={` flex ${
-        modetype ? "text-dark-mode" : "text-light-mode"
-      } items-center z-10 py-6 px-4 justify-end`}
-    >
+    <div className={` flex  items-center z-10 py-6 px-4 justify-end`}>
       <div className="w-max">
         <Select
-          options={options}
           value={"25"}
           onChange={(value) => {
             console.log("skkssss", value);
           }}
-        />
+        >
+          {options?.map((item) => (
+            <MenuItem key={item?.value} value={item?.value}>
+              {item?.name}
+            </MenuItem>
+          ))}
+        </Select>
       </div>
-      <TablePagination
-        bodyData={inputData}
-        modetype={modetype}
-        data={data}
-        itemsPerPage={"25"}
-      />
+      <TablePagination bodyData={inputData} data={data} itemsPerPage={"5"} />
     </div>
   );
 };

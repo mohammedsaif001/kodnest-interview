@@ -1,9 +1,8 @@
-import { Box } from "@mui/material";
+import SideTable from "@/components/dashboard/SideTable";
 import {
   HIGHEST_TURNOVER_SPORTS,
   MOST_PROFITABLE_SPORTS,
-} from "../constants/tableHeaders";
-import SideTable from "@/components/dashboard/SideTable";
+} from "@/constants/tableHeaders";
 const winnerData = [
   {
     userId: "100000177",

@@ -24,9 +24,9 @@ const TableBody = ({
   totalRecordsFromFrontend,
   modetype,
 }: any) => {
-  const resData = data?.data ?? data;
+  const resData = data;
   const pathname = usePathname();
-
+  console.log("jshjshsss", resData);
   return (
     <>
       {data?.data !== null &&
@@ -64,7 +64,8 @@ const TableBody = ({
   );
 };
 
-const TableHeader = ({ header, setHeader, modalHeading, modetype }: any) => {
+const TableHeader = ({ header, modalHeading, modetype }: any) => {
+  console.log("shjshjss", header);
   return (
     <thead>
       <tr className="text-blackishText  bg-table-header-color h-10 font-semibold tracking-wider sm:text-[0.7rem] 2xl:text-xs ">
@@ -117,31 +118,23 @@ const TableComponent = ({
   modalHeading?: string;
 }) => {
   const totalRecordsFromFrontend = body?.length || body?.data?.totalRecords;
-  const TABLE_UTILITY_REQUIERED =
-    (!!body?.data?.totalRecords || !!body?.totalRecords) ?? false;
 
   const pathName = usePathname();
 
-  const [headerState, setHeaderState] = useState(null);
-
   const loadData = (body: any) => {
-    return body?.data || body;
+    return body;
   };
 
   return (
     <div className={`w-full ${className ? className : `h-max`} mt-3`}>
       <div className=" h-full w-full overflow-x-auto">
         <table className="mt-2 w-full text-left text-sm">
-          <TableHeader
-            header={headerState}
-            setHeader={setHeaderState}
-            modalHeading={modalHeading}
-          />
+          <TableHeader header={header} modalHeading={modalHeading} />
           <tbody>
             <TableBody
               onClick={onClick}
               data={loadData(body) ?? {}}
-              header={headerState}
+              header={header}
               handleDelete={handleDelete}
               handleEdit={handleEdit}
               FormValues={FormValues}
@@ -153,12 +146,7 @@ const TableComponent = ({
         </table>
       </div>
 
-      {TABLE_UTILITY_REQUIERED && (
-        <TableUtility
-          inputData={{}}
-          data={body?.data?.totalRecords ? body?.data : body}
-        />
-      )}
+      <TableUtility inputData={{}} data={body} />
     </div>
   );
 };

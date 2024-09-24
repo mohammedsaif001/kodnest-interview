@@ -40,9 +40,84 @@ const eventsSlice = createSlice({
       console.log("sjhsjsss", newData);
       state.unshift({ ...newData, eventId, noOfAttendees });
     },
+    editAttendee(
+      state: Draft<typeof initialState>,
+      action: PayloadAction<typeof initialState & { eventId: number }>
+    ) {
+      const { eventId, ...attendeeData } = action.payload;
+      const eventIndex = state.findIndex((item) => item.eventId === eventId);
+
+      if (eventIndex !== -1) {
+        const currentEvent = state[eventIndex];
+        const attendeeIndex = currentEvent?.attendees?.findIndex(
+          (attendee) => attendee.id === attendeeData?.id
+        );
+
+        if (attendeeIndex !== -1 && currentEvent.attendees) {
+          currentEvent.attendees[attendeeIndex] = {
+            ...currentEvent.attendees[attendeeIndex], // retain the existing attendee data
+            ...attendeeData, // overwrite with new data
+          };
+        }
+      }
+    },
+    deleteAttendee(
+      state: Draft<typeof initialState>,
+      action: PayloadAction<{ eventId: number; attendeeId: number }>
+    ) {
+      const { eventId, attendeeId } = action.payload;
+      const eventIndex = state.findIndex((item) => item.eventId === eventId);
+
+      if (eventIndex !== -1) {
+        const currentEvent = state[eventIndex];
+
+        // Find the index of the attendee to be deleted
+        const attendeeIndex = currentEvent?.attendees?.findIndex(
+          (attendee) => attendee.id === attendeeId
+        );
+
+        if (attendeeIndex !== -1 && currentEvent.attendees) {
+          currentEvent.attendees.splice(attendeeIndex, 1); // Remove the attendee
+        }
+      }
+    },
+    addAttendee(
+      state: Draft<typeof initialState>,
+      action: PayloadAction<{
+        eventId: number;
+        attendee: {
+          name: string;
+          emailId: string /* other fields */;
+        };
+      }>
+    ) {
+      const { eventId, attendee } = action.payload;
+      const eventIndex = state.findIndex((item) => item.eventId === eventId);
+
+      if (eventIndex !== -1) {
+        const currentEvent = state[eventIndex];
+
+        // Check if attendees array exists, if not initialize it
+        if (!currentEvent.attendees) {
+          currentEvent.attendees = [];
+        }
+
+        // Add the new attendee to the attendees array
+        currentEvent.attendees.unshift({
+          ...attendee,
+          id: new Date().getTime(),
+        });
+      }
+    },
   },
 });
 
-export const { editEventData, deleteEventData, addEventData } =
-  eventsSlice.actions;
+export const {
+  editEventData,
+  deleteEventData,
+  addEventData,
+  editAttendee,
+  deleteAttendee,
+  addAttendee,
+} = eventsSlice.actions;
 export default eventsSlice.reducer;

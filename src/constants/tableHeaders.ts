@@ -8,11 +8,6 @@ export const HIGHEST_TURNOVER_SPORTS = [
     key: "totalPnl",
     type: "AMOUNT",
   },
-  // {
-  //   name: "brand",
-  //   key: "brand",
-  //   // type: "PERCENTAGE",
-  // },
 ];
 
 const ACTION_FIELD_HEADER = {
@@ -58,6 +53,25 @@ export const EVENTS_HEADER = [
   ACTION_FIELD_HEADER,
 ];
 
+export const ATTENDEES_HEADER = [
+  {
+    name: "Attendee Id",
+    key: "attendeeId",
+    visible: false,
+  },
+  {
+    name: "Name",
+    key: "name",
+    visible: true,
+  },
+  {
+    name: "Email Id",
+    key: "emailId",
+    visible: true,
+  },
+  ACTION_FIELD_HEADER,
+];
+
 export const MOST_PROFITABLE_SPORTS = [
   {
     name: "user Id",
@@ -68,9 +82,4 @@ export const MOST_PROFITABLE_SPORTS = [
     key: "totalPnl",
     type: "AMOUNT",
   },
-  // {
-  //   name: "brand",
-  //   key: "brand",
-  //   // type: "PERCENTAGE",
-  // },
 ];

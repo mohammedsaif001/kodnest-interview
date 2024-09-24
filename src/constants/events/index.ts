@@ -1,3 +1,5 @@
+import { attendees } from "./attendees";
+
 export const eventsData = [
   {
     eventId: 10001,
@@ -6,6 +8,7 @@ export const eventsData = [
     eventLocation: "Bangalore",
     noOfAttendees: 10,
     eventDescription: "smdbais jsjasd khskdjasas ksjosasda",
+    attendees,
   },
   {
     eventId: 10002,
@@ -14,6 +17,7 @@ export const eventsData = [
     eventLocation: "Bangalore",
     noOfAttendees: 10,
     eventDescription: "smdbais jsjasd khskdjasas ksjosasda",
+    attendees,
   },
   {
     eventId: 10003,
@@ -22,6 +26,7 @@ export const eventsData = [
     eventLocation: "Bangalore",
     noOfAttendees: 10,
     eventDescription: "smdbais jsjasd khskdjasas ksjosasda",
+    attendees,
   },
   {
     eventId: 10004,
@@ -30,5 +35,6 @@ export const eventsData = [
     eventLocation: "Bangalore",
     noOfAttendees: 10,
     eventDescription: "smdbais jsjasd khskdjasas ksjosasda",
+    attendees,
   },
 ];

@@ -9,11 +9,13 @@ import {
 } from "@/config/redux/slices/eventSlice";
 import { useDispatch, useSelector } from "@/config/redux/store";
 import { EVENTS_HEADER } from "@/constants/tableHeaders";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const EventsPage = () => {
   const events = useSelector((store) => store.events);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [addOpen, setAddOpen] = useState(false);
 
@@ -24,6 +26,12 @@ const EventsPage = () => {
 
   const addOpenModel = (e) => {
     setAddOpen(e);
+  };
+
+  const onClick = (data) => {
+    const id = data?.data?.[data.key];
+    console.log("sjhjssss", id);
+    router.push(`/events/${id}`);
   };
 
   const handleEdit = (data) => {
@@ -48,7 +56,7 @@ const EventsPage = () => {
         header={EVENTS_HEADER}
         handleDelete={handleDelete}
         handleEdit={handleEdit}
-        // onClick={onClick}
+        onClick={onClick}
         Component={(props) => <EventForm {...props} isEdit={true} />}
         // modalHeading={modalHeading}
       />

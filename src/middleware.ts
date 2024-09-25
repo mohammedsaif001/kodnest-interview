@@ -23,6 +23,7 @@ export function middleware(request) {
 export const config = {
   matcher: [
     "/((?!_next/static|favicon.ico|).*)",
+    "/",
     "/dashboard",
     "/events",
     "/events/(.*)",

@@ -22,12 +22,12 @@ const EventForm = ({ register, errors }) => {
       <InputField
         name="eventDate"
         type="date"
-        label={"Event Name"}
+        label={"Event Date"}
         register={(name) =>
           register(name, {
             required: {
               value: true,
-              message: "Event Name is Required",
+              message: "Event Date is Required",
             },
           })
         }

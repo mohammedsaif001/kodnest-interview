@@ -11,7 +11,7 @@ const AddForms = ({ handleAdd, Component, heading, ...rest }) => {
     setOpen(true);
   };
   return (
-    <div>
+    <div className="w-max">
       <Button color="primary" variant="contained" onClick={() => onOpen()}>
         {heading}
       </Button>

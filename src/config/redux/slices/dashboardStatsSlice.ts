@@ -1,6 +1,7 @@
 // dashboardSlice.js
 import { eventsData } from "@/constants/events";
 import { createSlice } from "@reduxjs/toolkit";
+import { TEventData } from "../../../../types";
 
 // Function to get total number of events
 export const getTotalEvents = () => {
@@ -8,8 +9,12 @@ export const getTotalEvents = () => {
 };
 
 // Function to get total number of attendees
-export const getTotalAttendees = () => {
-  return eventsData.reduce((total, event) => total + event.attendees.length, 0);
+export const getTotalAttendees = (data: TEventData[] | null = null) => {
+  const eventsToUse = data || eventsData;
+  return eventsToUse.reduce(
+    (total, event) => total + event.attendees.length,
+    0
+  );
 };
 
 // Function to get upcoming events
@@ -37,6 +42,10 @@ const dashboardStatsSlice = createSlice({
   reducers: {
     incrementTotalEvents: (state) => {
       state.totalEvents++;
+    },
+    recalculateTotalAttendees: (state, action) => {
+      console.log("sjhsjsss", action.payload);
+      state.totalAttendees = getTotalAttendees(action.payload);
     },
     incrementTotalAttendees: (state) => {
       state.totalAttendees++;
@@ -67,24 +76,39 @@ const dashboardStatsSlice = createSlice({
         const existingEventIndex = state.upcomingEvents.findIndex(
           (event) => event.eventId === data.eventId
         );
-
         if (existingEventIndex !== -1) {
           // Update existing event in upcoming events
-          state.upcomingEvents[existingEventIndex] = data;
+          if (new Date(data.eventDate) < new Date()) {
+            // remove existing event in future events & add in past if selected date is past
+            state.upcomingEvents.splice(existingEventIndex, 1);
+            state.pastEvents.unshift(data);
+          } else {
+            // Replace the data if date is present
+            state.upcomingEvents[existingEventIndex] = data;
+          }
         } else {
           // If it's not found in upcoming, check in past events
           const pastEventIndex = state.pastEvents.findIndex(
             (event) => event.eventId === data.eventId
           );
+
           if (pastEventIndex !== -1) {
-            // Update existing event in past events
-            state.pastEvents[pastEventIndex] = data;
-          } else {
-            // If the event is new, add it to upcoming or past based on the date
             if (new Date(data.eventDate) > new Date()) {
+              // Remove existing event in past events & add in future if selected date is in future
+              state.pastEvents.splice(pastEventIndex, 1);
               state.upcomingEvents.unshift(data);
             } else {
-              state.pastEvents.unshift(data);
+              // Replace the data if date is past
+              state.pastEvents[pastEventIndex] = data;
+            }
+          } else {
+            // If the event is new, add it to upcoming or past based on the date
+            const id = new Date().getTime();
+            const newData = { ...data, eventId: id };
+            if (new Date(data.eventDate) > new Date()) {
+              state.upcomingEvents.unshift(newData);
+            } else {
+              state.pastEvents.unshift(newData);
             }
           }
         }
@@ -101,5 +125,6 @@ export const {
   decrementTotalEvents,
   decrementTotalAttendees,
   replaceUpcomingPastEvents,
+  recalculateTotalAttendees,
 } = dashboardStatsSlice.actions;
 export default dashboardStatsSlice.reducer;

@@ -5,6 +5,7 @@ import TableComponent from "@/components/table/TableComponent";
 import {
   decrementTotalEvents,
   incrementTotalEvents,
+  recalculateTotalAttendees,
   replaceUpcomingPastEvents,
 } from "@/config/redux/slices/dashboardStatsSlice";
 import {
@@ -55,6 +56,11 @@ const EventsListClient = () => {
     dispatch(deleteEventData(data?.eventId));
     dispatch(decrementTotalEvents());
     dispatch(replaceUpcomingPastEvents({ data, isDelete: true }));
+    dispatch(
+      recalculateTotalAttendees(
+        events.filter((item) => item.eventId !== data?.eventId)
+      )
+    );
     showToast("success", "Event Deleted");
   };
 

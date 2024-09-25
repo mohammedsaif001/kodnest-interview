@@ -14,12 +14,12 @@ const SideTable = ({
   header: TTableHeaders[];
 }) => {
   return (
-    <div className="flex flex-col bg-white p-2 rounded-lg items-center h-max w-max">
+    <div className="flex flex-col bg-white p-2 rounded-lg items-center h-max w-full ">
       <div className="flex w-full items-center justify-start gap-2">
         🏆
         <h1 className="font-bold ">{title}</h1>
       </div>
-      <table className="w-full overflow-scroll text-xs lg:text-sm mt-4">
+      <table className="w-full h-max text-xs lg:text-sm mt-4 overflow-x-auto">
         <thead className="capitalize bg-table-header-color text-left">
           <tr>
             {header?.map((head) => (

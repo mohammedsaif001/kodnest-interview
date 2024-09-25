@@ -7,7 +7,7 @@ import LoginFrom from "@/components/form/LoginForm";
 const LandingScreen = () => {
   return (
     <section
-      className="bg-primary-linear-gradient-main w-full h-screen laptop-lg:h-screen flex justify-center items-center flex-col relative px-4
+      className="bg-primary-linear-gradient-main w-full h-screen flex items-center md:justify-center flex-col relative px-4
     "
     >
       <div className="flex justify-center items-center gap-8 flex-col md:flex-row ">

@@ -93,6 +93,7 @@ const TableComponent = <T,>({
   Component,
   modalHeading,
 }: TTableComponent<T>) => {
+  console.log("shsjsss", body);
   return (
     <div className={`w-full ${className ? className : `h-max`} mt-3`}>
       <div className=" h-full w-full overflow-x-auto">
@@ -111,7 +112,7 @@ const TableComponent = <T,>({
           </tbody>
         </table>
       </div>
-      {body?.length > 0 ?? <TableUtility data={body} />}
+      {body?.length > 0 && <TableUtility data={body} />}
     </div>
   );
 };

@@ -53,7 +53,7 @@ const dashboardStatsSlice = createSlice({
       state.totalEvents--;
     },
     decrementTotalAttendees: (state) => {
-      state.totalAttendees++;
+      state.totalAttendees--;
     },
     pushUpcomingEvents: (state, action) => {
       state.upcomingEvents.unshift(action.payload);

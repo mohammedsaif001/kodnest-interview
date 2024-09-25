@@ -1,8 +1,8 @@
 "use client";
-import React, { ComponentType } from "react";
+import React, { ComponentType, useEffect } from "react";
 import LoadTableColumns from "./LoadTableColumns";
 import TableUtility from "./TableUtility";
-import { useSelector } from "@/config/redux/store";
+import { useDispatch, useSelector } from "@/config/redux/store";
 import {
   TEventPayloadOnclick,
   THandleDelete,
@@ -11,6 +11,10 @@ import {
   TTableComponent,
   TTableHeaders,
 } from "../../../types";
+import {
+  handleChangeItemsPerPage,
+  handleChangePageNumber,
+} from "@/config/redux/slices/paginationSlice";
 
 const TableBody = <T,>({
   data,
@@ -23,12 +27,18 @@ const TableBody = <T,>({
 }: TTableBody<T>) => {
   const paginationStore = useSelector((store) => store.pagination);
   const { itemsPerPage, pageNumber } = paginationStore;
-
+  const dispatch = useDispatch();
   const resData = data?.slice(
     itemsPerPage * (pageNumber - 1),
     pageNumber * itemsPerPage
   );
 
+  useEffect(() => {
+    if (data.length > 0 && !resData.length && pageNumber > 1) {
+      dispatch(handleChangeItemsPerPage(2));
+      dispatch(handleChangePageNumber(pageNumber - 1));
+    }
+  }, [data, resData]);
   return (
     <>
       {Array.isArray(resData) && resData?.length ? (

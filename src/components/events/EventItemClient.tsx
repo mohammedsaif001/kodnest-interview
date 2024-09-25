@@ -15,8 +15,9 @@ import {
   incrementTotalAttendees,
 } from "@/config/redux/slices/dashboardStatsSlice";
 import { showToast } from "@/utils";
+import { TAttendee, TAttendeeWithId } from "../../../types";
 
-const EventItemClient = ({ eventId }) => {
+const EventItemClient = ({ eventId }: { eventId: string }) => {
   const eventDetails = useSelector(
     (state) => state.events.filter((item) => item.eventId === +eventId)[0]
   );
@@ -24,14 +25,14 @@ const EventItemClient = ({ eventId }) => {
   const dispatch = useDispatch();
   const attendeeList = eventDetails?.attendees;
 
-  const handleDelete = (data) => {
+  const handleDelete = (data: TAttendeeWithId) => {
     console.log("shjsksss", data);
     dispatch(deleteAttendee({ eventId: +eventId, attendeeId: data?.id }));
     dispatch(decrementTotalAttendees());
     showToast("success", "Attendee Deleted");
   };
 
-  const handleEdit = (data) => {
+  const handleEdit = (data: TAttendeeWithId) => {
     dispatch(
       editAttendee({
         ...data,
@@ -43,7 +44,7 @@ const EventItemClient = ({ eventId }) => {
     console.log("sjhsss", data);
   };
 
-  const handleAdd = (data) => {
+  const handleAdd = (data: TAttendee) => {
     dispatch(addAttendee({ eventId: +eventId, attendee: data }));
     dispatch(incrementTotalAttendees());
     showToast("success", "Attendee Added");
@@ -92,7 +93,7 @@ const EventItemClient = ({ eventId }) => {
         handleDelete={handleDelete}
         modalHeading={"Attendee"}
         handleEdit={handleEdit}
-        Component={(props) => <AttendeeForm {...props} isEdit={true} />}
+        Component={(props) => <AttendeeForm {...props} />}
       />
     </div>
   );

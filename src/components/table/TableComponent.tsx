@@ -1,8 +1,15 @@
 "use client";
-import React from "react";
+import React, { ComponentType } from "react";
 import LoadTableColumns from "./LoadTableColumns";
 import TableUtility from "./TableUtility";
 import { useSelector } from "@/config/redux/store";
+import {
+  TEventPayloadOnclick,
+  THandleDelete,
+  THandleEdit,
+  TTableComponent,
+  TTableHeaders,
+} from "../../../types";
 
 interface Params {
   key: string;
@@ -54,11 +61,11 @@ const TableBody = ({
   );
 };
 
-const TableHeader = ({ header, modalHeading }: any) => {
+const TableHeader = ({ header }: { header: TTableHeaders[] }) => {
   return (
     <thead>
       <tr className=" bg-table-header-color h-10 font-semibold tracking-wider sm:text-[0.7rem] 2xl:text-xs ">
-        {header?.map((head: any, index) =>
+        {header?.map((head, index) =>
           head?.visible ? (
             <th
               className={`${index === 0 && "rounded-tl-xl"} py-2 capitalize `}
@@ -77,25 +84,16 @@ const TableHeader = ({ header, modalHeading }: any) => {
   );
 };
 
-const TableComponent = ({
+const TableComponent = <T,>({
   header,
   body,
   onClick,
-  className,
+  className = "",
   handleDelete,
   handleEdit,
   Component,
   modalHeading,
-}: {
-  header: any;
-  body: any;
-  onClick?: (params: Params) => void;
-  className?: string;
-  handleDelete?: any;
-  handleEdit?: any;
-  Component?: any;
-  modalHeading?: string;
-}) => {
+}: TTableComponent<T>) => {
   const loadData = (body: any) => {
     return body;
   };
@@ -104,7 +102,7 @@ const TableComponent = ({
     <div className={`w-full ${className ? className : `h-max`} mt-3`}>
       <div className=" h-full w-full overflow-x-auto">
         <table className="mt-2 w-full text-left text-sm">
-          <TableHeader header={header} modalHeading={modalHeading} />
+          <TableHeader header={header} />
           <tbody>
             <TableBody
               onClick={onClick}

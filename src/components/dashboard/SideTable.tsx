@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { EventData } from "../../../types";
+import { TEventData } from "../../../types";
 
 type THeader = {
   name: string;
@@ -14,7 +14,7 @@ const SideTable = ({
   header,
 }: {
   title: string;
-  data: EventData[];
+  data: TEventData[];
   header: THeader[];
 }) => {
   return (

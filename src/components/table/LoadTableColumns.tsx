@@ -25,6 +25,7 @@ const LoadTableColumns = ({
   handleEdit?: any;
   Component?: any;
   modalHeading?: string;
+  rowIndex: number;
 }) => {
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);

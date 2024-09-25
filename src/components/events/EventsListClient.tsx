@@ -17,6 +17,7 @@ import { EVENTS_HEADER } from "@/constants/tableHeaders";
 import { showToast } from "@/utils";
 import { useRouter } from "next/navigation";
 import {
+  TEventData,
   TEventDetails,
   TEventDetailsWithId,
   TEventPayloadOnclick,
@@ -35,7 +36,7 @@ const EventsListClient = () => {
     showToast("success", "Event Added");
   };
 
-  const onClick = (data: TEventPayloadOnclick) => {
+  const onClick = (data: TEventPayloadOnclick<TEventData>) => {
     const id = data.key === "eventId" ? data.data.eventId : null;
     if (id) {
       console.log("sjhjssss", data, id);
@@ -77,7 +78,7 @@ const EventsListClient = () => {
         handleDelete={handleDelete}
         handleEdit={handleEdit}
         onClick={onClick}
-        Component={(props) => <EventForm {...props} isEdit={true} />}
+        Component={(props) => <EventForm {...props} />}
         modalHeading={"Event"}
       />
     </div>

@@ -1,3 +1,5 @@
+import { TTableHeaderType } from "../../types";
+
 export const UPCOMING_PAST_EVENTS_HEADER = [
   {
     name: "Event Id",
@@ -17,7 +19,7 @@ export const UPCOMING_PAST_EVENTS_HEADER = [
 const ACTION_FIELD_HEADER = {
   name: "Actions",
   key: "crud",
-  type: "CRUD",
+  type: "CRUD" as TTableHeaderType,
   visible: true,
 };
 
@@ -25,7 +27,7 @@ export const EVENTS_HEADER = [
   {
     name: "Event Id",
     key: "eventId",
-    type: "CLICKABLE",
+    type: "CLICKABLE" as TTableHeaderType,
     visible: true,
   },
   {
@@ -36,7 +38,7 @@ export const EVENTS_HEADER = [
   {
     name: "eventDate",
     key: "eventDate",
-    type: "DATE",
+    type: "DATE" as TTableHeaderType,
     visible: true,
   },
   {

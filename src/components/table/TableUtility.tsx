@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import TablePagination from "./TablePagination";
 import { MenuItem, Select } from "@mui/material";
@@ -29,6 +29,11 @@ const TableUtility = ({ inputData, data, modetype }: any) => {
       name: "10",
     },
   ];
+
+  useEffect(() => {
+    dispatch(handleChangePageNumber(1));
+    dispatch(handleChangeItemsPerPage(2));
+  }, [pathname]);
   console.log("Shsjkhsss", data);
   return (
     <div

@@ -54,6 +54,7 @@ const InputField = ({
         text-sm py-1 pl-1`}
       >
         {label}
+        {required && <span className="text-red-500">&nbsp;*</span>}
       </p>
       <OutlinedInput
         error={!!errorField?.message}

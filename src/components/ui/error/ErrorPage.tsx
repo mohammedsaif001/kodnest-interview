@@ -40,7 +40,7 @@ const ErrorPage = ({ error, reset }) => {
             () => router.back()
           }
           variant="contained"
-          color="secondary"
+          color="error"
           className="text-sm"
         >
           Go Back

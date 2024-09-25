@@ -4,6 +4,7 @@ export const UPCOMING_PAST_EVENTS_HEADER = [
   {
     name: "Event Id",
     key: "eventId",
+    type: "CLICKABLE" as TTableHeaderType,
   },
 
   {

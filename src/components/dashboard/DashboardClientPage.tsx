@@ -35,7 +35,7 @@ const DashboardClientPage = () => {
             return (
               <div
                 key={item?.name}
-                className="border border-table-header-color rounded-[0.25rem] h-full lg:h-60 w-52 lg:w-60 flex flex-col justify-center items-center "
+                className="border border-table-header-color rounded-[0.25rem] py-4 sm:py-2 md:py-0 h-full md:h-60 w-52 md:w-60 flex flex-col justify-center items-center "
               >
                 <span className="text-xs font-normal mt-2">{item?.name}</span>
                 <div className="w-full h-[0.75px] bg-page-background my-2"></div>
@@ -47,7 +47,7 @@ const DashboardClientPage = () => {
           })}
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-start w-full  gap-2  ">
+        <div className="flex flex-col md:flex-row justify-center  items-center md:items-start w-full  gap-2  ">
           <SideTable
             title="Upcoming Events"
             header={UPCOMING_PAST_EVENTS_HEADER}

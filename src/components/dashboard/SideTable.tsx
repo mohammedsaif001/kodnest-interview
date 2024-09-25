@@ -1,12 +1,8 @@
 "use client";
 
 import React from "react";
-import { TEventData } from "../../../types";
-
-type THeader = {
-  name: string;
-  key: string;
-};
+import { TEventData, TTableHeaders } from "../../../types";
+import Link from "next/link";
 
 const SideTable = ({
   title,
@@ -15,7 +11,7 @@ const SideTable = ({
 }: {
   title: string;
   data: TEventData[];
-  header: THeader[];
+  header: TTableHeaders[];
 }) => {
   return (
     <div className="flex flex-col bg-white p-2 rounded-lg items-center h-max w-max">
@@ -48,11 +44,22 @@ const SideTable = ({
   );
 };
 
-function loadTableColumns(header, data) {
+function loadTableColumns(header: TTableHeaders[], data) {
+  console.log("Shjkshss", header, data);
   return header.map((col) => {
     return (
       <td className="py-4 px-4" key={col?.key}>
-        {data[col?.key]}
+        {col?.type === "CLICKABLE" ? (
+          <Link
+            href={`/events/${data[col?.key]}`}
+            className="cursor-pointer underline"
+          >
+            {data[col?.key]}
+          </Link>
+        ) : (
+          data[col?.key]
+        )}
+        {}
       </td>
     );
   });

@@ -14,6 +14,8 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name?: string;
   className?: string;
   fullWidth?: boolean;
+  register: any;
+  errors: any;
 }
 
 const InputField = ({
@@ -28,7 +30,7 @@ const InputField = ({
   defaultValue = null,
   readOnly = false,
   ...rest
-}) => {
+}: InputProps) => {
   const errorField = errors?.[name];
   const [showPassword, setShowPassword] = useState(
     name?.toLowerCase().includes("password") ? false : true

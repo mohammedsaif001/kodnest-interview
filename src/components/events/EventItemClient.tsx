@@ -26,7 +26,6 @@ const EventItemClient = ({ eventId }: { eventId: string }) => {
   const attendeeList = eventDetails?.attendees;
 
   const handleDelete = (data: TAttendeeWithId) => {
-    console.log("shjsksss", data);
     dispatch(deleteAttendee({ eventId: +eventId, attendeeId: data?.id }));
     dispatch(decrementTotalAttendees());
     showToast("success", "Attendee Deleted");
@@ -40,8 +39,6 @@ const EventItemClient = ({ eventId }: { eventId: string }) => {
       })
     );
     showToast("success", "Attendee Edited");
-
-    console.log("sjhsss", data);
   };
 
   const handleAdd = (data: TAttendee) => {
@@ -50,7 +47,6 @@ const EventItemClient = ({ eventId }: { eventId: string }) => {
     showToast("success", "Attendee Added");
   };
 
-  console.log("sjhsss", eventDetails);
   return (
     <div className="p-4 flex flex-col gap-2">
       <section className="flex justify-between">

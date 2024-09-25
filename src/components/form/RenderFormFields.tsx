@@ -16,14 +16,12 @@ const RenderFormFields = ({
         }
       : {},
   });
-  console.log("sjhsjsss", data);
   const { register, control, handleSubmit, formState, watch, setValue, reset } =
     form;
 
   const { errors } = formState;
 
   const onSubmitHandler = (data) => {
-    console.log("shjsss", data);
     onSubmit(data);
     handleClose();
   };

@@ -31,7 +31,6 @@ const eventsSlice = createSlice({
       action: PayloadAction<string | number>
     ) {
       const id = action.payload;
-      console.log("sjhsjsss", id);
       return state.filter((item) => item.eventId !== id);
     },
 
@@ -41,7 +40,6 @@ const eventsSlice = createSlice({
     ) {
       const eventId = new Date().getTime();
       const newData = action.payload;
-      console.log("sjhsjsss", newData);
       state.unshift({ ...newData, eventId, attendees: [] });
     },
     editAttendee(
@@ -49,7 +47,6 @@ const eventsSlice = createSlice({
       action: PayloadAction<TAttendeeWithId & { eventId: number }>
     ) {
       const { eventId, ...attendeeData } = action.payload;
-      console.log("sjgsjss", attendeeData);
       const eventIndex = state.findIndex((item) => item.eventId === eventId);
 
       if (eventIndex !== -1) {

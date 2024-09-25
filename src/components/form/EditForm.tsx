@@ -10,7 +10,6 @@ const EditForm = ({
   heading,
   Component,
 }) => {
-  console.log("hsksss", editData);
   return (
     <section className="w-full flex justify-end">
       <CustomModal

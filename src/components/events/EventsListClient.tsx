@@ -30,7 +30,6 @@ const EventsListClient = () => {
   const router = useRouter();
 
   const handleAdd = (data: TEventDetails) => {
-    console.log("Skkssss", data);
     dispatch(addEventData(data));
     dispatch(incrementTotalEvents());
     dispatch(replaceUpcomingPastEvents({ data, isDelete: false }));
@@ -40,7 +39,6 @@ const EventsListClient = () => {
   const onClick = (data: TEventPayloadOnclick<TEventData>) => {
     const id = data.key === "eventId" ? data.data.eventId : null;
     if (id) {
-      console.log("sjhjssss", data, id);
       router.push(`/events/${id}`);
     }
   };
@@ -48,7 +46,6 @@ const EventsListClient = () => {
   const handleEdit = (data: TEventDetailsWithId) => {
     dispatch(editEventData(data));
     dispatch(replaceUpcomingPastEvents({ data, isDelete: false }));
-    console.log("Shkssss", data);
     showToast("success", "Event Edited");
   };
 
@@ -64,7 +61,6 @@ const EventsListClient = () => {
     showToast("success", "Event Deleted");
   };
 
-  console.log("Sjksss", events);
   return (
     <div className="p-4">
       <section className="flex justify-between gap-3">

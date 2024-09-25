@@ -45,7 +45,6 @@ const SideTable = ({
 };
 
 function loadTableColumns(header: TTableHeaders[], data) {
-  console.log("Shjkshss", header, data);
   return header.map((col) => {
     return (
       <td className="py-4 px-4" key={col?.key}>

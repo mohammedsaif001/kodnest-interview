@@ -44,7 +44,6 @@ const dashboardStatsSlice = createSlice({
       state.totalEvents++;
     },
     recalculateTotalAttendees: (state, action) => {
-      console.log("sjhsjsss", action.payload);
       state.totalAttendees = getTotalAttendees(action.payload);
     },
     incrementTotalAttendees: (state) => {

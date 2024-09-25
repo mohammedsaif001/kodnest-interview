@@ -33,7 +33,6 @@ const TableUtility = ({ data }) => {
     dispatch(handleChangePageNumber(1));
     dispatch(handleChangeItemsPerPage(2));
   }, [dispatch, pathname]);
-  console.log("Shsjkhsss", data);
   return (
     <div
       className={` flex flex-row-reverse  items-center z-10 py-6 px-4 justify-between`}

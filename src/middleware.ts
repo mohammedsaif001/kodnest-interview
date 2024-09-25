@@ -13,7 +13,6 @@ export function middleware(request) {
     return NextResponse.redirect(url, request.url);
   } else if (accessToken && url.pathname === "/") {
     const url = request.nextUrl.clone();
-    console.log("sjsjhssss", url);
     if (url.pathname === "/") {
       url.pathname = "/dashboard";
       return NextResponse.redirect(url, request.url);

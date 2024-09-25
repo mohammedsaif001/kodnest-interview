@@ -20,7 +20,6 @@ const LoadTableColumns = <T,>({
 }: TTableLoadColumns<T>) => {
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  console.log("shjshjsss", data, rowIndex);
   const handleEditModal = () => setEditModal(!editModal);
   const handleDeleteModal = () => setDeleteModal(!deleteModal);
 

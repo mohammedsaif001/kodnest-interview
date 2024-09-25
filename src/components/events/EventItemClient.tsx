@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "@/config/redux/store";
 import TableComponent from "../table/TableComponent";
 import { ATTENDEES_HEADER } from "@/constants/tableHeaders";
 import AttendeeForm from "../form/dashboard/AttendeeForm";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import {
   addAttendee,
   deleteAttendee,
@@ -16,12 +17,14 @@ import {
 } from "@/config/redux/slices/dashboardStatsSlice";
 import { showToast } from "@/utils";
 import { TAttendee, TAttendeeWithId } from "../../../types";
+import { useRouter } from "next/navigation";
 
 const EventItemClient = ({ eventId }: { eventId: string }) => {
   const eventDetails = useSelector(
     (state) => state.events.filter((item) => item.eventId === +eventId)[0]
   );
 
+  const router = useRouter();
   const dispatch = useDispatch();
   const attendeeList = eventDetails?.attendees;
 
@@ -49,6 +52,12 @@ const EventItemClient = ({ eventId }: { eventId: string }) => {
 
   return (
     <div className="p-4 flex flex-col gap-2">
+      <div
+        className="border-2 cursor-pointer w-max rounded-md p-1 border-slate-900"
+        onClick={() => router.back()}
+      >
+        <ArrowBackIcon />
+      </div>
       <section className="flex justify-between">
         <h3 className="text-2xl font-bold">{eventDetails?.eventName}</h3>
         <AddForms

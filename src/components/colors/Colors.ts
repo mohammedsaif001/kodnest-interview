@@ -7,7 +7,7 @@ export const COLORS_COMBINATION = {
   "warning-color": "#F0C130",
   "text-color-light": "#EFF6F6",
   "table-header-color": "rgba(0, 188, 212, 0.30)",
-  "table-header-color-light": "rgba(179, 235, 242, 0.20)",
+  "table-header-color-light": "rgba(179, 235, 242, 0.3)",
   "page-background": "#F5F6F6",
   "text-color-dark": "#181C31",
   "primary-color": "#3C80F5",

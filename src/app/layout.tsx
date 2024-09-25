@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <MaterialUITheme>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-page-background`}
         >
           <ToastContainer />
           <ReduxProvider>{children}</ReduxProvider>

@@ -1,16 +1,9 @@
 "use client";
-import React, { ComponentType, useEffect } from "react";
+import React, { useEffect } from "react";
 import LoadTableColumns from "./LoadTableColumns";
 import TableUtility from "./TableUtility";
 import { useDispatch, useSelector } from "@/config/redux/store";
-import {
-  TEventPayloadOnclick,
-  THandleDelete,
-  THandleEdit,
-  TTableBody,
-  TTableComponent,
-  TTableHeaders,
-} from "../../../types";
+import { TTableBody, TTableComponent, TTableHeaders } from "../../../types";
 import {
   handleChangeItemsPerPage,
   handleChangePageNumber,
@@ -46,7 +39,7 @@ const TableBody = <T,>({
           <tr
             key={i}
             className={`
-            border-b-searchBtnColor-hover border-b-[0.5px]  text-xs font-normal tracking-wider `}
+            border-b-searchBtnColor-hover border-b-[0.5px]  text-xs font-normal tracking-wider even:bg-table-header-color-light`}
           >
             {
               <LoadTableColumns
@@ -106,7 +99,7 @@ const TableComponent = <T,>({
   return (
     <div className={`w-full ${className ? className : `h-max`} mt-3`}>
       <div className=" h-full w-full overflow-x-auto">
-        <table className="mt-2 w-full text-left text-sm">
+        <table className="mt-2 w-full text-left text-sm bg-white">
           <TableHeader header={header} />
           <tbody>
             <TableBody

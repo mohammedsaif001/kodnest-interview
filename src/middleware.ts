@@ -7,7 +7,6 @@ export function middleware(request) {
     return NextResponse.next();
   };
   const url = request.nextUrl.clone();
-
   if (!accessToken && url.pathname !== "/") {
     url.pathname = "/";
     return NextResponse.redirect(url, request.url);
@@ -22,5 +21,10 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|favicon.ico|).*)", "/dashboard", "/events", "/"],
+  matcher: [
+    "/((?!_next/static|favicon.ico|).*)",
+    "/dashboard",
+    "/events",
+    "/events/(.*)",
+  ],
 };

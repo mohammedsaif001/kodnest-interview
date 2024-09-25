@@ -38,7 +38,6 @@ const DashboardClientPage = () => {
                 className="border border-table-header-color rounded-[0.25rem] py-4 sm:py-2 md:py-0 h-full md:h-60 w-52 md:w-60 flex flex-col justify-center items-center "
               >
                 <span className="text-xs font-normal mt-2">{item?.name}</span>
-                <div className="w-full h-[0.75px] bg-page-background my-2"></div>
                 <span className="text-2xl font-bold text-text-color-dark">
                   {item?.value}
                 </span>

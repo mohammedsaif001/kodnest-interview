@@ -11,20 +11,22 @@ const EditForm = ({
   Component,
 }) => {
   return (
-    <section className="w-full flex justify-end">
-      <CustomModal
-        heading={heading}
-        open={editModal}
-        handleClose={() => handleEditModal()}
-      >
-        <RenderFormFields
-          handleClose={handleEditModal}
-          data={editData}
-          onSubmit={handleEditFunction}
-          Component={Component}
-        />
-      </CustomModal>
-    </section>
+    <td>
+      <section className="w-full flex justify-end">
+        <CustomModal
+          heading={heading}
+          open={editModal}
+          handleClose={() => handleEditModal()}
+        >
+          <RenderFormFields
+            handleClose={handleEditModal}
+            data={editData}
+            onSubmit={handleEditFunction}
+            Component={Component}
+          />
+        </CustomModal>
+      </section>
+    </td>
   );
 };
 

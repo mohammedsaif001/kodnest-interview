@@ -27,7 +27,7 @@ const TableBody = <T,>({
   );
 
   useEffect(() => {
-    if (data.length > 0 && !resData.length && pageNumber > 1) {
+    if (data?.length > 0 && !resData?.length && pageNumber > 1) {
       dispatch(handleChangeItemsPerPage(2));
       dispatch(handleChangePageNumber(pageNumber - 1));
     }

@@ -30,9 +30,12 @@ const EventsListClient = () => {
   const router = useRouter();
 
   const handleAdd = (data: TEventDetails) => {
-    dispatch(addEventData(data));
+    const eventId = new Date().getTime();
+    dispatch(addEventData({ ...data, eventId }));
     dispatch(incrementTotalEvents());
-    dispatch(replaceUpcomingPastEvents({ data, isDelete: false }));
+    dispatch(
+      replaceUpcomingPastEvents({ data: { ...data, eventId }, isDelete: false })
+    );
     showToast("success", "Event Added");
   };
 

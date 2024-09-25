@@ -1,11 +1,7 @@
 // counterSlice.js
 import { eventsData } from "@/constants/events";
 import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
-import {
-  TAttendeeWithId,
-  TEventDetails,
-  TEventDetailsWithId,
-} from "../../../../types";
+import { TAttendeeWithId, TEventDetailsWithId } from "../../../../types";
 
 const initialState = eventsData;
 
@@ -36,11 +32,10 @@ const eventsSlice = createSlice({
 
     addEventData(
       state: Draft<typeof initialState>,
-      action: PayloadAction<TEventDetails>
+      action: PayloadAction<TEventDetailsWithId>
     ) {
-      const eventId = new Date().getTime();
       const newData = action.payload;
-      state.unshift({ ...newData, eventId, attendees: [] });
+      state.unshift({ ...newData, attendees: [] });
     },
     editAttendee(
       state: Draft<typeof initialState>,

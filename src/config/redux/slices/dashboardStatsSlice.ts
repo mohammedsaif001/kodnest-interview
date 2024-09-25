@@ -102,8 +102,7 @@ const dashboardStatsSlice = createSlice({
             }
           } else {
             // If the event is new, add it to upcoming or past based on the date
-            const id = new Date().getTime();
-            const newData = { ...data, eventId: id };
+            const newData = { ...data };
             if (new Date(data.eventDate) > new Date()) {
               state.upcomingEvents.unshift(newData);
             } else {

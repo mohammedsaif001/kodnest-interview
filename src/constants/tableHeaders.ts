@@ -32,28 +32,28 @@ export const EVENTS_HEADER = [
     visible: true,
   },
   {
-    name: "eventName",
+    name: "Event Name",
     key: "eventName",
     visible: true,
   },
   {
-    name: "eventDate",
+    name: "Event Date",
     key: "eventDate",
     type: "DATE" as TTableHeaderType,
     visible: true,
   },
   {
-    name: "eventLocation",
+    name: "Event Location",
     key: "eventLocation",
     visible: true,
   },
   {
-    name: "noOfAttendees",
+    name: "Total Attendees",
     key: "noOfAttendees",
     visible: true,
   },
   {
-    name: "eventDescription",
+    name: "Event Description",
     key: "eventDescription",
     visible: true,
   },
@@ -77,16 +77,4 @@ export const ATTENDEES_HEADER = [
     visible: true,
   },
   ACTION_FIELD_HEADER,
-];
-
-export const MOST_PROFITABLE_SPORTS = [
-  {
-    name: "user Id",
-    key: "userId",
-  },
-  {
-    name: "loss",
-    key: "totalPnl",
-    type: "AMOUNT",
-  },
 ];

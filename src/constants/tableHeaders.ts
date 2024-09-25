@@ -7,7 +7,6 @@ export const UPCOMING_PAST_EVENTS_HEADER = [
   {
     name: "Event Name",
     key: "eventName",
-    type: "AMOUNT",
   },
   {
     name: "Date",

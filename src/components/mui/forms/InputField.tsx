@@ -14,9 +14,6 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name?: string;
   className?: string;
   fullWidth?: boolean;
-  index?: number | string;
-  fieldNameFieldArray?: string;
-  individualFieldName?: string;
 }
 
 const InputField = ({
@@ -28,17 +25,11 @@ const InputField = ({
   required = false,
   fullWidth = false,
   disabled = false,
-  index = null,
-  fieldNameFieldArray = null,
-  individualFieldName = null,
   defaultValue = null,
   readOnly = false,
   ...rest
 }) => {
-  const errorField =
-    errors?.[name] ||
-    errors?.[fieldNameFieldArray]?.[index]?.[individualFieldName];
-
+  const errorField = errors?.[name];
   const [showPassword, setShowPassword] = useState(
     name?.toLowerCase().includes("password") ? false : true
   );

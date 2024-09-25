@@ -1,6 +1,6 @@
 import InputField from "@/components/mui/forms/InputField";
 
-const AttendeeForm = ({ register, errors, data, watch }) => {
+const AttendeeForm = ({ register, errors }) => {
   return (
     <>
       <InputField

@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type TEventDetails = {
   eventName: string;
   eventDate: string;
@@ -22,8 +24,16 @@ export type EventData = TEventDetailsWithId & {
   attendees: TAttendeeWithId[];
 };
 
-type TEventPayloadOnclick = {
+export type TEventPayloadOnclick = {
   key: string;
   data: EventData;
   index: number;
+};
+
+export type TCustomModal = {
+  handleClose: () => void;
+  open: boolean;
+  children: ReactNode;
+  heading: string;
+  width?: string;
 };

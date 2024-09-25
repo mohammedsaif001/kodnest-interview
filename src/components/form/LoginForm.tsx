@@ -29,6 +29,7 @@ const LoginFrom = () => {
         showToast("error", res.error);
       }
     } catch (error) {
+      console.error("Something Went Wrong", error.message);
       showToast("error", "Something Went Wrong");
     }
   };

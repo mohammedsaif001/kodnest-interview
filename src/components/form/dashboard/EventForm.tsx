@@ -1,10 +1,7 @@
 "use client";
 import InputField from "@/components/mui/forms/InputField";
-import { usePathname } from "next/navigation";
 
-const EventForm = ({ register, control, errors, data, watch }) => {
-  const pathName = usePathname();
-
+const EventForm = ({ register, errors }) => {
   return (
     <>
       <InputField

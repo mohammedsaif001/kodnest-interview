@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import TablePagination from "./TablePagination";
 import { MenuItem, Select } from "@mui/material";
 import { useDispatch, useSelector } from "@/config/redux/store";
@@ -10,11 +10,10 @@ import {
   handleChangePageNumber,
 } from "@/config/redux/slices/paginationSlice";
 
-const TableUtility = ({ inputData, data, modetype }: any) => {
+const TableUtility = ({ data }: any) => {
   const itemsPerPage = useSelector((state) => state.pagination.itemsPerPage);
   const dispatch = useDispatch();
   const pathname = usePathname();
-  const router = useRouter();
   const options = [
     {
       value: "2",
@@ -33,7 +32,7 @@ const TableUtility = ({ inputData, data, modetype }: any) => {
   useEffect(() => {
     dispatch(handleChangePageNumber(1));
     dispatch(handleChangeItemsPerPage(2));
-  }, [pathname]);
+  }, [dispatch, pathname]);
   console.log("Shsjkhsss", data);
   return (
     <div

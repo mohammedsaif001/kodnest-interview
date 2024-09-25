@@ -2,9 +2,10 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import CloseIcon from "@mui/icons-material/Close";
+import { TCustomModal } from "../../../types";
 
 const style = {
-  position: "absolute" as "absolute",
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -23,7 +24,7 @@ export default function CustomModal({
   children,
   heading,
   width = "50%",
-}: any) {
+}: TCustomModal) {
   return (
     <div>
       <Modal open={open} onClose={handleClose}>

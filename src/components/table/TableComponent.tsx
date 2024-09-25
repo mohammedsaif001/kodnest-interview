@@ -14,7 +14,6 @@ const TableBody = ({
   data,
   header,
   onClick,
-  onChange,
   handleDelete,
   handleEdit,
   Component,
@@ -27,7 +26,6 @@ const TableBody = ({
     itemsPerPage * (pageNumber - 1),
     pageNumber * itemsPerPage
   );
-  console.log("jshjshsss", resData);
   return (
     <>
       {Array.isArray(resData) &&

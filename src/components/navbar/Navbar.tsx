@@ -16,22 +16,16 @@ const Navbar = () => {
     }, 300);
   };
   return (
-    <header className="w-full flex items-center h-[3rem] bg-primary-linear-gradient-main text-white justify-end px-5">
+    <header className="w-full text-md md:text-lg flex items-center h-[3rem] bg-primary-linear-gradient-main text-white justify-end px-5">
       <ul className="flex gap-5">
         {NAVBAR_LINKS.map((item) => {
           return (
-            <li
-              key={item?.href}
-              className=" cursor-pointer text-lg hover:underline"
-            >
+            <li key={item?.href} className=" cursor-pointer hover:underline">
               <Link href={item?.href}>{item?.name}</Link>
             </li>
           );
         })}
-        <p
-          onClick={handleLogout}
-          className="cursor-pointer text-lg hover:underline"
-        >
+        <p onClick={handleLogout} className="cursor-pointer hover:underline">
           Logout
         </p>
       </ul>

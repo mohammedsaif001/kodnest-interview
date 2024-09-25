@@ -85,14 +85,16 @@ const EventItemClient = ({ eventId }: { eventId: string }) => {
         <ArrowBackIcon />
       </div>
       <section className="flex justify-between">
-        <h3 className="text-2xl font-bold">{eventDetails?.eventName}</h3>
+        <h3 className="text-xl md:text-2xl font-bold">
+          {eventDetails?.eventName}
+        </h3>
         <AddForms
           handleAdd={handleAdd}
           Component={AttendeeForm}
           heading={`Add Event`}
         />
       </section>
-      <article className="w-max flex flex-col gap-2">
+      <article className="w-max flex flex-col gap-2 text-sm">
         {eventDetails &&
           Object?.entries(eventDetails)?.map(([key, value]) => {
             // Skip 'eventName' and 'attendees'

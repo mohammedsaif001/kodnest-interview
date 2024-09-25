@@ -66,7 +66,7 @@ const TableBody = <T,>({
 const TableHeader = ({ header }: { header: TTableHeaders[] }) => {
   return (
     <thead>
-      <tr className=" bg-table-header-color h-10 font-semibold tracking-wider sm:text-[0.7rem] 2xl:text-xs ">
+      <tr className=" bg-table-header-color h-10 font-semibold tracking-wider text-[0.7rem] sm:text-[0.8rem] 2xl:text-xs ">
         {header?.map((head, index) =>
           head?.visible ? (
             <th

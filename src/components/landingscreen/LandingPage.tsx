@@ -10,7 +10,7 @@ const LandingScreen = () => {
       className="bg-primary-linear-gradient-main w-full h-screen laptop-lg:h-screen flex justify-center items-center flex-col relative px-4
     "
     >
-      <div className="flex justify-center items-center gap-8 flex-col md:flex-row px-6">
+      <div className="flex justify-center items-center gap-8 flex-col md:flex-row ">
         <div className="md:w-96 justify-center flex gap-[0.86rem] flex-col">
           <div className="w-full flex flex-wrap gap-y-1 justify-center gap-5 md:block scale-75 md:scale-100">
             <p className="text-white  font-bold uppercase text-5xl">EVENT</p>

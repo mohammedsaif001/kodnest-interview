@@ -35,7 +35,7 @@ const LoginFrom = () => {
   };
 
   return (
-    <Box className="flex h-max  flex-col justify-center gap-4 bg-[#FFFFFF] px-10 rounded-lg py-6">
+    <Box className="flex h-max  flex-col justify-center gap-4 bg-[#FFFFFF] px-5 md:px-10 rounded-lg py-6">
       <Typography variant="h5" className="h-max ml-3" color={"#2B2E48"}>
         Login
       </Typography>

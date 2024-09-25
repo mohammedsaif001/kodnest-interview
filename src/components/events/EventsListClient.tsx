@@ -63,8 +63,8 @@ const EventsListClient = () => {
 
   return (
     <div className="p-4">
-      <section className="flex justify-between gap-3">
-        <h3 className="font-bold text-2xl">Events Page</h3>
+      <section className="flex justify-between items-center gap-3">
+        <h3 className="font-bold text-xl md:text-2xl">Events Page</h3>
         <AddForms
           handleAdd={handleAdd}
           Component={EventForm}

@@ -3,7 +3,7 @@ import { Pagination, Stack } from "@mui/material";
 import { useDispatch, useSelector } from "@/config/redux/store";
 import { handleChangePageNumber } from "@/config/redux/slices/paginationSlice";
 
-const TablePagination = ({ data }: { data?: any }) => {
+const TablePagination = ({ data }) => {
   const pageNumber = useSelector((state) => state.pagination.pageNumber);
   const itemsPerPage = useSelector((state) => state.pagination.itemsPerPage);
 
@@ -11,7 +11,7 @@ const TablePagination = ({ data }: { data?: any }) => {
 
   const count = Math.ceil(data?.length / Number(itemsPerPage));
 
-  const handleChange = (e, value) => {
+  const handleChange = (_, value: number) => {
     dispatch(handleChangePageNumber(value));
   };
 

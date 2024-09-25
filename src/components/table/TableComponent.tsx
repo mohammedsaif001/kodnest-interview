@@ -12,12 +12,6 @@ import {
   TTableHeaders,
 } from "../../../types";
 
-interface Params {
-  key: string;
-  value?: any;
-  data?: any;
-}
-
 const TableBody = <T,>({
   data,
   header,

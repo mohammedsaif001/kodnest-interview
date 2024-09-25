@@ -26,7 +26,7 @@ const LoadTableColumns = <T,>({
 
   return (
     <>
-      {header?.map((col: any, index: any) => {
+      {header?.map((col, index: number) => {
         switch (true) {
           case col.type === "CLICKABLE":
             return col.visible ? (

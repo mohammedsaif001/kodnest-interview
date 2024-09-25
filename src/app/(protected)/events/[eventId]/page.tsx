@@ -10,6 +10,7 @@ export async function generateMetadata({
 }: EventItemProps) {
   return {
     title: `Event ${eventId} Details`,
+    description: `Event Details of ${eventId} | ID | Name | Date | Location | Description. This page alos includes list of attendees attending this event  `,
   };
 }
 const EventItemComponent: React.FC<EventItemProps> = ({

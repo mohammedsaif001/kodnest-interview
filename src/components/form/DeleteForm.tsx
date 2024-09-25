@@ -16,12 +16,17 @@ const DeleteForm = ({
         open={deleteModal}
         handleClose={handleDeleteModal}
       >
-        <div className="flex justify-end gap-4">
-          <Button color="secondary" onClick={() => handleDeleteModal()}>
+        <div className="flex justify-end gap-4 mt-4">
+          <Button
+            color="error"
+            variant="contained"
+            onClick={() => handleDeleteModal()}
+          >
             Cancel
           </Button>
           <Button
             color="primary"
+            variant="contained"
             onClick={() => {
               handleDelete(data);
               handleDeleteModal();

@@ -1,6 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import CloseIcon from "@mui/icons-material/Close";
 
 const style = {
   position: "absolute" as "absolute",
@@ -33,7 +34,7 @@ export default function CustomModal({
             </h3>
             <span className="relative inline cursor-pointer pb-0.5 z-50">
               <abbr title="close" onClick={handleClose}>
-                <div className="">X</div>
+                <CloseIcon color="error" fontSize="medium" />
               </abbr>
             </span>
           </div>

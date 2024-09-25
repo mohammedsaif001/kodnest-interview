@@ -7,13 +7,17 @@ import {
 } from "@mui/material/styles";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { COLORS_COMBINATION } from "@/components/colors/Colors";
 
 const theme = createTheme({
-  // palette:{
-  //     primary: {
-  //         main:'rgb(0,0,0)'
-  //     }
-  // }
+  palette: {
+    primary: {
+      main: COLORS_COMBINATION["primary-color"],
+    },
+    error: {
+      main: COLORS_COMBINATION["error-color"],
+    },
+  },
 });
 
 const MaterialUITheme = ({ children }: { children: ReactNode }) => {

@@ -5,7 +5,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
   try {
     const { email, password } = await req.json();
     console.log("shsjssss", email, password);
-    if (email === "abc@abc.com" && password === "1234") {
+    if (email === "admin@xyz.com" && password === "admin@1234") {
       // Create JWT token (use a secret key)
       const token = await jwt.sign(
         { email, password },

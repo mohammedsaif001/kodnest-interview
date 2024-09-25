@@ -57,5 +57,13 @@ export type TTableComponent<T> = {
   modalHeading?: string;
 };
 
+export type TTableBody<T> = Omit<TTableComponent<T>, "body"> & {
+  data: T[]; // Replacing body with data
+};
+
+export type TTableLoadColumns<T> = Omit<TTableBody<T>, "data"> & {
+  data: T;
+  rowIndex: number;
+};
 export type THandleDelete<T> = (item: T) => void;
 export type THandleEdit<T> = (item: T) => void;

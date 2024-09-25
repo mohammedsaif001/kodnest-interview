@@ -10,7 +10,7 @@ import {
   handleChangePageNumber,
 } from "@/config/redux/slices/paginationSlice";
 
-const TableUtility = ({ data }: any) => {
+const TableUtility = ({ data }) => {
   const itemsPerPage = useSelector((state) => state.pagination.itemsPerPage);
   const dispatch = useDispatch();
   const pathname = usePathname();

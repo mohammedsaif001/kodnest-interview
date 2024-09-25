@@ -7,6 +7,7 @@ import {
   TEventPayloadOnclick,
   THandleDelete,
   THandleEdit,
+  TTableBody,
   TTableComponent,
   TTableHeaders,
 } from "../../../types";
@@ -17,7 +18,7 @@ interface Params {
   data?: any;
 }
 
-const TableBody = ({
+const TableBody = <T,>({
   data,
   header,
   onClick,
@@ -25,7 +26,7 @@ const TableBody = ({
   handleEdit,
   Component,
   modalHeading,
-}: any) => {
+}: TTableBody<T>) => {
   const paginationStore = useSelector((store) => store.pagination);
   const { itemsPerPage, pageNumber } = paginationStore;
 
@@ -33,10 +34,11 @@ const TableBody = ({
     itemsPerPage * (pageNumber - 1),
     pageNumber * itemsPerPage
   );
+
   return (
     <>
-      {Array.isArray(resData) &&
-        resData?.map((data: any, i: any) => (
+      {Array.isArray(resData) && resData?.length ? (
+        resData?.map((data, i: number) => (
           <tr
             key={i}
             className={`
@@ -45,7 +47,7 @@ const TableBody = ({
             {
               <LoadTableColumns
                 data={data}
-                classNames={"sm:py-3 2xl:py-4 pl-6"}
+                className={"sm:py-3 2xl:py-4 pl-6"}
                 header={header}
                 onClick={onClick}
                 handleDelete={handleDelete}
@@ -56,7 +58,10 @@ const TableBody = ({
               />
             }
           </tr>
-        ))}
+        ))
+      ) : (
+        <span className="mt-4">No Records to display :(</span>
+      )}
     </>
   );
 };
@@ -94,10 +99,6 @@ const TableComponent = <T,>({
   Component,
   modalHeading,
 }: TTableComponent<T>) => {
-  const loadData = (body: any) => {
-    return body;
-  };
-
   return (
     <div className={`w-full ${className ? className : `h-max`} mt-3`}>
       <div className=" h-full w-full overflow-x-auto">
@@ -106,7 +107,7 @@ const TableComponent = <T,>({
           <tbody>
             <TableBody
               onClick={onClick}
-              data={loadData(body) ?? {}}
+              data={body}
               header={header}
               handleDelete={handleDelete}
               handleEdit={handleEdit}
@@ -116,8 +117,7 @@ const TableComponent = <T,>({
           </tbody>
         </table>
       </div>
-
-      <TableUtility inputData={{}} data={body} />
+      {body?.length > 0 ?? <TableUtility data={body} />}
     </div>
   );
 };

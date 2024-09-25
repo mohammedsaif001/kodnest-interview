@@ -18,6 +18,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
       resData.cookies.set({
         name: "token",
         value: token,
+        httpOnly: true,
+        sameSite: "strict",
+        maxAge: 60 * 60, // 1 hour in seconds
+        path: "/", // Cookie is valid across the entire site
       });
       return resData;
     } else {

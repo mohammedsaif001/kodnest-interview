@@ -28,7 +28,7 @@ export default function CustomModal({
   return (
     <div>
       <Modal open={open} onClose={handleClose}>
-        <Box sx={{ ...style, width: width }}>
+        <Box sx={{ ...style }} className={`w-[70%] md:w-1/2`}>
           <div className="flex justify-between items-center py-2 mb-3 ">
             <h3 className="capitalize text-text-color-dark font-bold text-xl">
               {heading}

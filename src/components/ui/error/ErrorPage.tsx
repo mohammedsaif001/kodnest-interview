@@ -10,7 +10,7 @@ const ErrorPage = ({ error, reset }) => {
       error.message,
       error.digest,
       error.name,
-      "Catching Errrors======================================== Error.tsx"
+      "Catching Errrors============================= Error.tsx"
     );
   }, [error]);
   const router = useRouter();

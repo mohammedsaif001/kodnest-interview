@@ -16,14 +16,13 @@ import {
   incrementTotalAttendees,
 } from "@/config/redux/slices/dashboardStatsSlice";
 import { showToast } from "@/utils";
-import { TAttendee, TAttendeeWithId } from "../../../types";
+import { TAttendee, TAttendeeWithId, TEventData } from "../../../types";
 import { useRouter } from "next/navigation";
 
 const EventItemClient = ({ eventId }: { eventId: string }) => {
-  const eventDetails = useSelector(
+  const eventDetails: TEventData = useSelector(
     (state) => state.events.filter((item) => item.eventId === +eventId)[0]
   );
-
   const router = useRouter();
   const dispatch = useDispatch();
   const attendeeList = eventDetails?.attendees;
@@ -34,7 +33,31 @@ const EventItemClient = ({ eventId }: { eventId: string }) => {
     showToast("success", "Attendee Deleted");
   };
 
+  const isEmailIdAlreadyExists = (
+    data: TAttendeeWithId | TAttendee
+  ): boolean => {
+    // Check if there is an attendee with the same email and a different ID
+    const emailExists = attendeeList.some((attendee) => {
+      const isSameEmail = attendee?.emailId === data?.emailId;
+
+      // Check if data is of type TAttendeeWithId before accessing id
+      const isDifferentId = "id" in data ? attendee?.id !== data.id : true;
+
+      return isSameEmail && isDifferentId;
+    });
+
+    // Show a toast message if an attendee with the same email exists
+    if (emailExists) {
+      showToast("error", "Attendee with this email already exists");
+    }
+
+    return emailExists; // Return true if the email exists, otherwise false
+  };
+
   const handleEdit = (data: TAttendeeWithId) => {
+    if (isEmailIdAlreadyExists(data)) {
+      return;
+    }
     dispatch(
       editAttendee({
         ...data,
@@ -45,6 +68,9 @@ const EventItemClient = ({ eventId }: { eventId: string }) => {
   };
 
   const handleAdd = (data: TAttendee) => {
+    if (isEmailIdAlreadyExists(data)) {
+      return;
+    }
     dispatch(addAttendee({ eventId: +eventId, attendee: data }));
     dispatch(incrementTotalAttendees());
     showToast("success", "Attendee Added");
